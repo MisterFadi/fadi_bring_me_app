@@ -26,15 +26,31 @@ List<CountryGroup> countrys = [
     imageTitle: "Denmark",
   ),
   CountryGroup(
-    imagePath: "assets/images/Flag_of_Syria.jpg",
-    imageTitle: "Arabisch",
+    imagePath: "assets/images/Flag_of_Egypt.jpg",
+    imageTitle: "Egypt",
   ),
   CountryGroup(
     imagePath: "assets/images/Flag_of_Finland.jpg",
     imageTitle: "Finland",
   ),
   CountryGroup(
-    imagePath: "assets/images/Flag_of_Syria.jpg",
-    imageTitle: "Arabisch",
+    imagePath: "assets/images/Flag_of_India.jpg",
+    imageTitle: "India",
+  ),
+  CountryGroup(
+    imagePath: "assets/images/Flag_of_Italy.jpg",
+    imageTitle: "Italy",
+  ),
+  CountryGroup(
+    imagePath: "assets/images/Flag_of_Poland.jpg",
+    imageTitle: "Polen",
+  ),
+  CountryGroup(
+    imagePath: "assets/images/Flag_of_Russia.jpg",
+    imageTitle: "Russland",
+  ),
+  CountryGroup(
+    imagePath: "assets/images/Flag_of_Spain.jpg",
+    imageTitle: "Spain",
   ),
 ];
