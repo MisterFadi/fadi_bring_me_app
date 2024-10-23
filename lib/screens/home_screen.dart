@@ -45,6 +45,7 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
+                        print(countrys[index].imageTitle);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
