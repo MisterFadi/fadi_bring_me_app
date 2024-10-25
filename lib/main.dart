@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/config/themes.dart';
 import 'package:fadi_bring_me_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
+      theme: myTheme,
       home: const Scaffold(
         backgroundColor: Colors.green,
         body: HomeScreen(),
