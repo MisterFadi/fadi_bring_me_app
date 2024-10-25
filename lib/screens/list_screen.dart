@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class ListScreen extends StatelessWidget {
@@ -9,25 +10,24 @@ class ListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Row(
-          children: [
-            const SizedBox(
-              width: 70,
-            ),
-            const Text(
-              "BringMe",
-              style: TextStyle(color: Colors.white, fontSize: 30),
-            ),
-            const SizedBox(width: 60),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.settings),
-            ),
-          ],
-        ),
+        actions: [
+          const Text(
+            "BringMe",
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          const SizedBox(width: 65),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsScreen()));
+            },
+            icon: const Icon(Icons.settings),
+          ),
+          const SizedBox(width: 20),
+        ],
       ),
-      backgroundColor: Colors.green,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -38,9 +38,11 @@ class ListScreen extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ListScreen()));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ListScreen(),
+                    ),
+                  );
                 },
                 child: Container(
                   height: 50,
@@ -253,7 +255,6 @@ class ListScreen extends StatelessWidget {
           ),
         ),
       ),
-      //bottomNavigationBar: NavigationBar(destinations: destinations)
     );
   }
 }

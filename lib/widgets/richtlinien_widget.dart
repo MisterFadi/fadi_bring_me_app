@@ -12,14 +12,10 @@ class RichtlinienWidget extends StatelessWidget {
         print(
             "Indem du BringMe verwendest, stimmst du unseren Nutzungs- und Datenschutzbestimmungen zu.");
       },
-      child: const Text(
-        "Indem du BringMe verwendest, stimmst du unseren Nutzungs- und Datenschutzbestimmungen zu.",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontWeight: FontWeight.normal,
-          fontSize: 10,
-        ),
-      ),
+      child: Text(
+          "Indem du BringMe verwendest, stimmst du unseren Nutzungs- und Datenschutzbestimmungen zu.",
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.displaySmall),
     );
   }
 }

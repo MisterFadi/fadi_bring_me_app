@@ -11,10 +11,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-      ),
-      backgroundColor: Colors.green,
+      appBar: AppBar(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -151,7 +148,7 @@ class LoginScreen extends StatelessWidget {
                     },
                     text: "Anmelden mit Facebook",
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 35),
                   const RichtlinienWidget()
                 ],
               ),

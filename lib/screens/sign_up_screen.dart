@@ -10,10 +10,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-      ),
-      backgroundColor: Colors.green,
+      appBar: AppBar(),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -114,8 +111,8 @@ class SignUpScreen extends StatelessWidget {
                 contHeight: 60,
                 contWidth: 330,
               ),
-              const SizedBox(height: 110),
-              const RichtlinienWidget()
+              const Expanded(child: SizedBox()),
+              const RichtlinienWidget(),
             ],
           ),
         ),

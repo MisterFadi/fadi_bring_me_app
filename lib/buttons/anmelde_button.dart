@@ -1,4 +1,4 @@
-import 'package:fadi_bring_me_app/screens/list_screen.dart';
+import 'package:fadi_bring_me_app/widgets/bottom_nav_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class AnmeldeButton extends StatelessWidget {
@@ -14,8 +14,10 @@ class AnmeldeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const ListScreen()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const BottomNavBarWidget()));
       },
       child: Container(
         height: contHeight,

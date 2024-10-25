@@ -7,19 +7,19 @@ class OderDeviderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        Expanded(child: Divider(thickness: 1)),
+        const Expanded(child: Divider(thickness: 1)),
         Center(
           child: Padding(
-            padding: EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Text(
               "oder",
-              style: TextStyle(fontSize: 15),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
         ),
-        Expanded(child: Divider(thickness: 1)),
+        const Expanded(child: Divider(thickness: 1)),
       ],
     );
   }

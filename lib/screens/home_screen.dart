@@ -22,13 +22,13 @@ class HomeScreen extends StatelessWidget {
               child: Image.asset(
                 "assets/logo/BringMe_Logo.png",
                 fit: BoxFit.cover,
-                width: 80,
-                height: 80,
+                width: 120,
+                height: 120,
               ),
             ),
-            const Text(
+            Text(
               "Bitte Sprache auswählen",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Divider(
               thickness: 3,

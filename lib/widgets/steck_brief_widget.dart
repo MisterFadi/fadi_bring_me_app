@@ -24,7 +24,8 @@ class SteckBriefWidget extends StatelessWidget {
           ),
           Text(
             title,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            style: Theme.of(context).textTheme.headlineMedium,
+            //style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
           ),
           const SizedBox(height: 10),
         ],
