@@ -23,7 +23,7 @@ class ProfilScreen extends StatelessWidget {
               icon: const Icon(
                 Icons.settings,
                 color: Colors.black,
-                size: 40,
+                size: 30,
               ),
             ),
           ],

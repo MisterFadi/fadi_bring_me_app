@@ -23,7 +23,7 @@ class ListScreen extends StatelessWidget {
             icon: const Icon(
               Icons.settings,
               color: Colors.black,
-              size: 40,
+              size: 30,
             ),
           ),
           const SizedBox(width: 20),
