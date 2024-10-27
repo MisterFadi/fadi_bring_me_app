@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
   const BottomNavBarWidget({super.key});
+
   @override
   State<BottomNavBarWidget> createState() => _BottomNavBarWidgetState();
 }

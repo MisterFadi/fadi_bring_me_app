@@ -11,10 +11,7 @@ class CardScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          const Text(
-            "BringMe",
-            style: TextStyle(color: Colors.white, fontSize: 30),
-          ),
+          Text("BringMe", style: Theme.of(context).textTheme.headlineLarge),
           const SizedBox(width: 65),
           IconButton(
             onPressed: () {
@@ -23,29 +20,47 @@ class CardScreen extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => const SettingsScreen()));
             },
-            icon: const Icon(Icons.settings),
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.black,
+              size: 40,
+            ),
           ),
           const SizedBox(width: 20),
         ],
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisAlignment: MainAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 30),
-              ColoredBox(color: Colors.grey),
-              SizedBox(height: 30),
-              SizedBox(
-                  height: 150,
-                  width: 250,
-                  child: ColoredBox(color: Colors.grey)),
+              const SizedBox(height: 15),
+              Container(
+                height: 580,
+                width: 320,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      color: const Color.fromARGB(255, 29, 110, 45),
+                      width: 0.5),
+                  color: Colors.green.shade800,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Center(
+                    //crossAxisAlignment: CrossAxisAlignment.start,
+
+                    child: Text(
+                        "Es befindet sich zur Zeit \nnoch nichts im Warenkorb",
+                        style: Theme.of(context).textTheme.bodyLarge),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
       ),
-      //bottomNavigationBar: NavigationBar(destinations: destinations)
     );
   }
 }

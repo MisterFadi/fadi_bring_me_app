@@ -71,22 +71,14 @@ class LoginScreen extends StatelessWidget {
                         contHeight: 50,
                         contWidth: 150,
                       ),
-                      const SizedBox(width: 60),
+                      const SizedBox(width: 40),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignUpScreen()));
+                          print("Sie haben ihr Passwort vergessen?");
                         },
-                        child: const Text(
-                          "Passwort vergessen?",
-                          style: TextStyle(
-                              color: Colors.black87,
-                              fontSize: 12,
-                              fontWeight: FontWeight.normal),
-                          textAlign: TextAlign.right,
-                        ),
+                        child: Text("Passwort vergessen?",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.bodySmall),
                       ),
                     ],
                   ),
@@ -103,16 +95,13 @@ class LoginScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => const SignUpScreen()));
               },
-              child: const Text(
+              child: Text(
                 "Noch kein Account? Hier Registrieren",
-                style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 12,
-                    fontWeight: FontWeight.normal),
+                style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.right,
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 6),
             SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -148,7 +137,7 @@ class LoginScreen extends StatelessWidget {
                     },
                     text: "Anmelden mit Facebook",
                   ),
-                  const SizedBox(height: 35),
+                  const SizedBox(height: 30),
                   const RichtlinienWidget()
                 ],
               ),

@@ -11,10 +11,7 @@ class ListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          const Text(
-            "BringMe",
-            style: TextStyle(color: Colors.white, fontSize: 30),
-          ),
+          Text("BringMe", style: Theme.of(context).textTheme.headlineLarge),
           const SizedBox(width: 65),
           IconButton(
             onPressed: () {
@@ -23,7 +20,11 @@ class ListScreen extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => const SettingsScreen()));
             },
-            icon: const Icon(Icons.settings),
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.black,
+              size: 40,
+            ),
           ),
           const SizedBox(width: 20),
         ],
@@ -55,14 +56,9 @@ class ListScreen extends StatelessWidget {
                     ],
                     borderRadius: BorderRadius.circular(0),
                   ),
-                  child: const Center(
-                    child: Text(
-                      "Party-Liste",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  child: Center(
+                    child: Text("Party-Liste",
+                        style: Theme.of(context).textTheme.headlineSmall),
                   ),
                 ),
               ),
@@ -85,14 +81,9 @@ class ListScreen extends StatelessWidget {
                     ],
                     borderRadius: BorderRadius.circular(0),
                   ),
-                  child: const Center(
-                    child: Text(
-                      "Shopping-Liste",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  child: Center(
+                    child: Text("Shopping-Liste",
+                        style: Theme.of(context).textTheme.headlineSmall),
                   ),
                 ),
               ),
@@ -115,14 +106,9 @@ class ListScreen extends StatelessWidget {
                     ],
                     borderRadius: BorderRadius.circular(0),
                   ),
-                  child: const Center(
-                    child: Text(
-                      "Wocheneinkaufs-Liste",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  child: Center(
+                    child: Text("Wocheneinkaufs-Liste",
+                        style: Theme.of(context).textTheme.headlineSmall),
                   ),
                 ),
               ),
@@ -145,14 +131,9 @@ class ListScreen extends StatelessWidget {
                     ],
                     borderRadius: BorderRadius.circular(0),
                   ),
-                  child: const Center(
-                    child: Text(
-                      "+ Neue Liste",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  child: Center(
+                    child: Text("+ Neue Liste",
+                        style: Theme.of(context).textTheme.headlineSmall),
                   ),
                 ),
               ),
@@ -178,14 +159,9 @@ class ListScreen extends StatelessWidget {
                         ],
                         borderRadius: BorderRadius.circular(9),
                       ),
-                      child: const Center(
-                        child: Text(
-                          "Dessert",
-                          style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      child: Center(
+                        child: Text("Dessert",
+                            style: Theme.of(context).textTheme.headlineSmall),
                       ),
                     ),
                   ),
@@ -208,14 +184,9 @@ class ListScreen extends StatelessWidget {
                         ],
                         borderRadius: BorderRadius.circular(9),
                       ),
-                      child: const Center(
-                        child: Text(
-                          "Shopping",
-                          style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      child: Center(
+                        child: Text("Shopping",
+                            style: Theme.of(context).textTheme.headlineSmall),
                       ),
                     ),
                   ),
@@ -238,14 +209,9 @@ class ListScreen extends StatelessWidget {
                         ],
                         borderRadius: BorderRadius.circular(9),
                       ),
-                      child: const Center(
-                        child: Text(
-                          "Büro",
-                          style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      child: Center(
+                        child: Text("Büro",
+                            style: Theme.of(context).textTheme.headlineSmall),
                       ),
                     ),
                   ),

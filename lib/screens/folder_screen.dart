@@ -11,16 +11,22 @@ class FolderScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          Text("BringMe", style: Theme.of(context).textTheme.headlineLarge),
+          const SizedBox(width: 65),
           IconButton(
             onPressed: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SettingsScreen()));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SettingsScreen(),
+                ),
+              );
             },
-            icon: const Icon(Icons.create_new_folder_outlined),
-            iconSize: 40,
-            color: Colors.white,
+            icon: const Icon(
+              Icons.create_new_folder_outlined,
+              color: Colors.white,
+              size: 40,
+            ),
           ),
           const SizedBox(width: 20),
         ],

@@ -20,7 +20,11 @@ class ProfilScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => const SettingsScreen()));
               },
-              icon: const Icon(Icons.settings),
+              icon: const Icon(
+                Icons.settings,
+                color: Colors.black,
+                size: 40,
+              ),
             ),
           ],
         ),
@@ -35,61 +39,44 @@ class ProfilScreen extends StatelessWidget {
                 radius: 80,
                 backgroundImage: AssetImage("assets/images/Fadi_Emoji.jpg"),
               ),
+              const SizedBox(height: 20),
               const SizedBox(),
-              const Text(
-                "Fadi Bdiwi",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 22),
-              ),
-              const Text(
-                "email1234@gmail.com",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
-              ),
+              Text("Fadi Bdiwi",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineMedium),
+              Text("email1234@gmail.com",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyMedium),
               const SizedBox(height: 20),
               Container(
-                height: 250,
+                height: 200,
                 width: 250,
                 color: Colors.green.shade900,
-                child: const Padding(
-                  padding: EdgeInsets.all(15.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Kontoeinstellungen",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                      Text(
-                        "     - email1234@gwefsfm",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15),
-                      ),
-                      Text(
-                        "     - email1234@gwefsfm",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15),
-                      ),
-                      Text(
-                        "     - email1234@gwefsfm",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15),
-                      ),
+                      Text("Kontoeinstellungen",
+                          style: Theme.of(context).textTheme.bodyLarge),
+                      Text("     - Dein Profil",
+                          style: Theme.of(context).textTheme.bodySmall),
+                      Text("     - Passwort ändern",
+                          style: Theme.of(context).textTheme.bodySmall),
+                      Text("     - Konto wechseln",
+                          style: Theme.of(context).textTheme.bodySmall),
+                      Text("     - Gruppeneinstellungen",
+                          style: Theme.of(context).textTheme.bodySmall),
+                      Text("     - Datenschutz",
+                          style: Theme.of(context).textTheme.bodySmall),
+                      Text("     - Konto löschen",
+                          style: Theme.of(context).textTheme.bodySmall),
+                      Text("     - Abmelden",
+                          style: Theme.of(context).textTheme.bodySmall),
                     ],
                   ),
                 ),
               ),
-
-              // const Expanded(child: SizedBox()),
             ],
           ),
         ),

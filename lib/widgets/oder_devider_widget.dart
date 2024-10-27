@@ -9,7 +9,9 @@ class OderDeviderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(child: Divider(thickness: 1)),
+        const Expanded(
+          child: Divider(thickness: 1),
+        ),
         Center(
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
@@ -19,7 +21,9 @@ class OderDeviderWidget extends StatelessWidget {
             ),
           ),
         ),
-        const Expanded(child: Divider(thickness: 1)),
+        const Expanded(
+          child: Divider(thickness: 1),
+        ),
       ],
     );
   }

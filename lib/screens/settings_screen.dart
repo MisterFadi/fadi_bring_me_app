@@ -21,96 +21,51 @@ class SettingsScreen extends StatelessWidget {
                 radius: 80,
                 backgroundImage: AssetImage("assets/images/Fadi_Emoji.jpg"),
               ),
-              const Text(
-                "Fadi Bdiwi",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 22),
-              ),
-              const Text(
-                "email1234@gmail.com",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
-              ),
               const SizedBox(height: 20),
+              Text("Fadi Bdiwi",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineMedium),
+              Text("email1234@gmail.com",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyMedium),
+              const SizedBox(height: 40),
               Container(
-                height: 150,
+                height: 110,
                 width: 250,
                 color: Colors.green.shade900,
-                child: const Padding(
-                  padding: EdgeInsets.all(15.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Listen",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                      Text(
-                        "     - Standardlisten",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15),
-                      ),
-                      Text(
-                        "     - Favoritenliste",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15),
-                      ),
-                      // Text(
-                      //   "     - email1234@gwefsfm",
-                      //   style: TextStyle(
-                      //       color: Colors.white,
-                      //       fontWeight: FontWeight.normal,
-                      //       fontSize: 15),
-                      // ),
+                      Text("Listen",
+                          style: Theme.of(context).textTheme.bodyLarge),
+                      Text("     - Standardlisten",
+                          style: Theme.of(context).textTheme.bodySmall),
+                      Text("     - Favoritenliste",
+                          style: Theme.of(context).textTheme.bodySmall),
                     ],
                   ),
                 ),
               ),
               const SizedBox(height: 30),
               Container(
-                height: 150,
+                height: 120,
                 width: 250,
                 color: Colors.green.shade900,
-                child: const Padding(
-                  padding: EdgeInsets.all(15.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Allgemein",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                      Text(
-                        "     - Benachrichtigung",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15),
-                      ),
-                      Text(
-                        "     - Berechtigung",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15),
-                      ),
-                      Text(
-                        "     - Amgebote",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15),
-                      ),
+                      Text("Allgemein",
+                          style: Theme.of(context).textTheme.bodyLarge),
+                      Text("     - Benachrichtigung",
+                          style: Theme.of(context).textTheme.bodySmall),
+                      Text("     - Berechtigung",
+                          style: Theme.of(context).textTheme.bodySmall),
+                      Text("     - Angebote",
+                          style: Theme.of(context).textTheme.bodySmall),
                     ],
                   ),
                 ),
