@@ -1,5 +1,5 @@
-import 'package:fadi_bring_me_app/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:timer_snackbar/timer_snackbar.dart';
 
 class FolderScreen extends StatelessWidget {
   const FolderScreen({
@@ -14,18 +14,21 @@ class FolderScreen extends StatelessWidget {
           Text("BringMe", style: Theme.of(context).textTheme.headlineLarge),
           const SizedBox(width: 65),
           IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SettingsScreen(),
-                ),
-              );
-            },
+            onPressed: () => timerSnackbar(
+              context: context,
+              contentText: "Ein neuer Ordner wurde hinzugefügt.",
+              buttonPrefixWidget: const Icon(
+                Icons.keyboard_return_outlined,
+                color: Colors.white,
+              ),
+              afterTimeExecute: () =>
+                  print("Ein neuer Ordner wurde hinzugefügt."),
+              second: 5,
+            ),
             icon: const Icon(
               Icons.create_new_folder_outlined,
               color: Colors.white,
-              size: 40,
+              size: 30,
             ),
           ),
           const SizedBox(width: 20),
