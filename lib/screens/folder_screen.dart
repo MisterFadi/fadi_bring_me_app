@@ -34,17 +34,33 @@ class FolderScreen extends StatelessWidget {
           const SizedBox(width: 20),
         ],
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
-                child: SizedBox(
+                child: Container(
                   height: 580,
-                  width: 300,
-                  child: ColoredBox(color: Colors.yellow),
+                  width: 320,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: const Color.fromARGB(255, 29, 110, 45),
+                        width: 0.5),
+                    color: Colors.green.shade800,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Center(
+                      //crossAxisAlignment: CrossAxisAlignment.start,
+
+                      child: Text(
+                          "Diese Seite ist noch in Bearbeitung. \n                                                          Hier erscheint bald eine Suchmaschine. \n                                                             Wir bitten um Verständnis :)",
+                          style: Theme.of(context).textTheme.bodySmall),
+                    ),
+                  ),
                 ),
               ),
             ],
