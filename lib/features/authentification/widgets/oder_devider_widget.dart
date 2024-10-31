@@ -9,6 +9,7 @@ class OderDeviderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        const SizedBox(width: 30),
         const Expanded(
           child: Divider(thickness: 1),
         ),
@@ -24,6 +25,7 @@ class OderDeviderWidget extends StatelessWidget {
         const Expanded(
           child: Divider(thickness: 1),
         ),
+        const SizedBox(width: 30),
       ],
     );
   }

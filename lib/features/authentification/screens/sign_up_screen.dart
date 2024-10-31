@@ -1,5 +1,5 @@
-import 'package:fadi_bring_me_app/buttons/anmelde_button.dart';
-import 'package:fadi_bring_me_app/widgets/richtlinien_widget.dart';
+import 'package:fadi_bring_me_app/shared/anmelde_button.dart';
+import 'package:fadi_bring_me_app/shared/richtlinien_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -30,14 +30,17 @@ class SignUpScreen extends StatelessWidget {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                child: TextField(
-                  obscureText: false, // text sehen
-                  textAlign: TextAlign.start,
+                child: TextFormField(
+                  style: const TextStyle(color: Colors.black54),
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    hintText: "Benutzername",
-                    hintStyle: const TextStyle(
-                      fontSize: 13,
-                    ),
+                    prefixIcon: const Icon(Icons.email),
+                    // labelText: "Email",
+                    // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
+                    hintText: "Email oder Telefonnummer",
+                    hintStyle:
+                        const TextStyle(fontSize: 12, color: Colors.grey),
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
@@ -50,14 +53,17 @@ class SignUpScreen extends StatelessWidget {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                child: TextField(
-                  obscureText: false, // text sehen
-                  textAlign: TextAlign.start,
+                child: TextFormField(
+                  style: const TextStyle(color: Colors.black54),
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    hintText: "E-Mail oder Telefonnummer",
-                    hintStyle: const TextStyle(
-                      fontSize: 13,
-                    ),
+                    prefixIcon: const Icon(Icons.email),
+                    // labelText: "Email",
+                    // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
+                    hintText: "Email oder Telefonnummer",
+                    hintStyle:
+                        const TextStyle(fontSize: 12, color: Colors.grey),
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
@@ -70,14 +76,18 @@ class SignUpScreen extends StatelessWidget {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                child: TextField(
-                  obscureText: true, // text uns
-                  textAlign: TextAlign.start,
+                child: TextFormField(
+                  obscureText: true,
+                  style: const TextStyle(color: Colors.black54),
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.lock),
+                    // labelText: "Passwort",
+                    // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
                     hintText: "Passwort",
-                    hintStyle: const TextStyle(
-                      fontSize: 13,
-                    ),
+                    hintStyle:
+                        const TextStyle(fontSize: 15, color: Colors.grey),
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
@@ -90,14 +100,18 @@ class SignUpScreen extends StatelessWidget {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                child: TextField(
-                  obscureText: true, // text uns
-                  textAlign: TextAlign.start,
+                child: TextFormField(
+                  obscureText: true,
+                  style: const TextStyle(color: Colors.black54),
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    hintText: "Passwort wiederholen",
-                    hintStyle: const TextStyle(
-                      fontSize: 13,
-                    ),
+                    prefixIcon: const Icon(Icons.lock),
+                    // labelText: "Passwort",
+                    // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
+                    hintText: "Passwort",
+                    hintStyle:
+                        const TextStyle(fontSize: 15, color: Colors.grey),
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
@@ -111,7 +125,7 @@ class SignUpScreen extends StatelessWidget {
                 contHeight: 60,
                 contWidth: 330,
               ),
-              const Expanded(child: SizedBox()),
+              const Spacer(),
               const RichtlinienWidget(),
             ],
           ),

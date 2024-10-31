@@ -1,4 +1,4 @@
-import 'package:fadi_bring_me_app/widgets/bottom_nav_bar_widget.dart';
+import 'package:fadi_bring_me_app/shared/bottom_nav_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class AnmeldeButton extends StatelessWidget {

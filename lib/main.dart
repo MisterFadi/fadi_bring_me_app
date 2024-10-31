@@ -1,5 +1,5 @@
 import 'package:fadi_bring_me_app/config/themes.dart';
-import 'package:fadi_bring_me_app/screens/home_screen.dart';
+import 'package:fadi_bring_me_app/features/home_screen/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

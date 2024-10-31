@@ -1,6 +1,6 @@
-import 'package:fadi_bring_me_app/repositories/country_data.dart';
-import 'package:fadi_bring_me_app/screens/login_screen.dart';
-import 'package:fadi_bring_me_app/widgets/steck_brief_widget.dart';
+import 'package:fadi_bring_me_app/features/authentification/screens/login_screen.dart';
+import 'package:fadi_bring_me_app/features/authentification/widgets/steck_brief_widget.dart';
+import 'package:fadi_bring_me_app/features/home_screen/repositories/country_data.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

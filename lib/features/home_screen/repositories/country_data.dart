@@ -1,4 +1,4 @@
-import 'package:fadi_bring_me_app/models/country_group.dart';
+import 'package:fadi_bring_me_app/features/home_screen/models/country_group.dart';
 
 List<CountryGroup> countrys = [
   CountryGroup(
