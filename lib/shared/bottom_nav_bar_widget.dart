@@ -3,7 +3,6 @@ import 'package:fadi_bring_me_app/features/folder_screen/screen/folder_screen.da
 import 'package:fadi_bring_me_app/features/kamera_screen/screen/kamera_screen.dart';
 import 'package:fadi_bring_me_app/features/list_screen/screen/list_screen.dart';
 import 'package:fadi_bring_me_app/features/profil_screen/screen/profil_sreen.dart';
-import 'package:fadi_bring_me_app/features/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
@@ -20,7 +19,6 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     const KameraScreen(),
     const CardScreen(),
     const ProfilScreen(),
-    const SettingsScreen()
   ];
   int currentIndex = 0;
 
