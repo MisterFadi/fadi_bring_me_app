@@ -1,11 +1,14 @@
+import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/features/authentification/screens/login_screen.dart';
 import 'package:fadi_bring_me_app/features/authentification/widgets/steck_brief_widget.dart';
-import 'package:fadi_bring_me_app/features/home_screen/repositories/country_data.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  final DatabaseRepository repository;
+
   const HomeScreen({
     super.key,
+    required this.repository,
   });
 
   @override
@@ -40,32 +43,44 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Scrollbar(
                 trackVisibility: true,
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        print(countrys[index].imageTitle);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoginScreen(
-                                language: countrys[index].imageTitle),
+                child: FutureBuilder(
+                  future: repository.getCountrys(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      // Ladeanzeige
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.white),
+                        ),
+                      );
+                    }
+                    return ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            //print(snapshot.data![index].imageTitle);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(
+                                    language: snapshot.data![index].imageTitle),
+                              ),
+                            );
+                          },
+                          child: SteckBriefWidget(
+                            image: snapshot.data![index].imagePath,
+                            title: snapshot.data![index].imageTitle,
                           ),
                         );
                       },
-                      child: SteckBriefWidget(
-                        image: countrys[index].imagePath,
-                        title: countrys[index].imageTitle,
-                      ),
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(height: 2);
+                      },
+                      itemCount: snapshot.data!.length,
                     );
                   },
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      height: 2,
-                    );
-                  },
-                  itemCount: countrys.length,
                 ),
               ),
             )
