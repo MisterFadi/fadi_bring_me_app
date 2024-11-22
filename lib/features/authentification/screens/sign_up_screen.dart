@@ -1,10 +1,13 @@
+import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/shared/anmelde_button.dart';
 import 'package:fadi_bring_me_app/shared/richtlinien_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
+  final DatabaseRepository repository;
   const SignUpScreen({
     super.key,
+    required this.repository,
   });
 
   @override
@@ -121,9 +124,10 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 40),
-              const AnmeldeButton(
+              AnmeldeButton(
                 contHeight: 60,
                 contWidth: 330,
+                repository: repository,
               ),
               const Spacer(),
               const RichtlinienWidget(),

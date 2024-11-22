@@ -65,7 +65,9 @@ class HomeScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => LoginScreen(
-                                    language: snapshot.data![index].imageTitle),
+                                  language: snapshot.data![index].imageTitle,
+                                  repository: repository,
+                                ),
                               ),
                             );
                           },

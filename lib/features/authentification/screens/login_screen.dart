@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/features/authentification/screens/sign_up_screen.dart';
 import 'package:fadi_bring_me_app/features/authentification/widgets/oder_devider_widget.dart';
 import 'package:fadi_bring_me_app/shared/anmelde_button.dart';
@@ -6,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key, required String language});
+  final DatabaseRepository repository;
+  const LoginScreen(
+      {super.key, required String language, required this.repository});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -79,9 +82,10 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               children: [
                 const SizedBox(width: 27),
-                const AnmeldeButton(
+                AnmeldeButton(
                   contHeight: 50,
                   contWidth: 150,
+                  repository: widget.repository,
                 ),
                 const SizedBox(width: 40),
                 GestureDetector(
@@ -103,7 +107,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const SignUpScreen()));
+                        builder: (context) => SignUpScreen(
+                              repository: widget.repository,
+                            )));
               },
               child: Text(
                 "Noch kein Account? Hier Registrieren",
