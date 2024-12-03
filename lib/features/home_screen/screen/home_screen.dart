@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
       child: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          // mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 5),
             ClipRRect(
@@ -28,6 +28,9 @@ class HomeScreen extends StatelessWidget {
                 width: 120,
                 height: 120,
               ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             Text(
               "Bitte Sprache auswählen",
@@ -85,7 +88,10 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
               ),
-            )
+            ),
+            const SizedBox(
+              height: 5,
+            ),
           ],
         ),
       ),

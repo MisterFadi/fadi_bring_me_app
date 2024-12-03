@@ -11,8 +11,9 @@ class ListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          const Expanded(child: SizedBox()),
           Text("BringMe", style: Theme.of(context).textTheme.headlineLarge),
-          const SizedBox(width: 65),
+          const Expanded(child: SizedBox()),
           IconButton(
             onPressed: () {
               Navigator.push(
@@ -26,7 +27,6 @@ class ListScreen extends StatelessWidget {
               size: 30,
             ),
           ),
-          const SizedBox(width: 20),
         ],
       ),
       body: SafeArea(
@@ -54,7 +54,7 @@ class ListScreen extends StatelessWidget {
                         color: Color.fromARGB(255, 242, 232, 207),
                       ),
                     ],
-                    borderRadius: BorderRadius.circular(0),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Text("Party-Liste",
@@ -79,7 +79,7 @@ class ListScreen extends StatelessWidget {
                         color: Color.fromARGB(255, 242, 232, 207),
                       ),
                     ],
-                    borderRadius: BorderRadius.circular(0),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Text("Shopping-Liste",
@@ -104,7 +104,7 @@ class ListScreen extends StatelessWidget {
                         color: Color.fromARGB(255, 242, 232, 207),
                       ),
                     ],
-                    borderRadius: BorderRadius.circular(0),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Text("Wocheneinkaufs-Liste",
@@ -112,7 +112,7 @@ class ListScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 80),
+              const Expanded(child: SizedBox()),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -129,7 +129,7 @@ class ListScreen extends StatelessWidget {
                         color: Color.fromARGB(255, 242, 232, 207),
                       ),
                     ],
-                    borderRadius: BorderRadius.circular(0),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Text("+ Neue Liste",
@@ -137,10 +137,11 @@ class ListScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 100),
+              const Expanded(child: SizedBox()),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(width: 35),
+                  const Expanded(child: SizedBox()),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -157,7 +158,7 @@ class ListScreen extends StatelessWidget {
                             color: Color.fromARGB(255, 242, 232, 207),
                           ),
                         ],
-                        borderRadius: BorderRadius.circular(9),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                         child: Text("Dessert",
@@ -165,7 +166,7 @@ class ListScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  const Expanded(child: SizedBox()),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -182,7 +183,7 @@ class ListScreen extends StatelessWidget {
                             color: Color.fromARGB(255, 242, 232, 207),
                           ),
                         ],
-                        borderRadius: BorderRadius.circular(9),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                         child: Text("Shopping",
@@ -190,7 +191,7 @@ class ListScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  const Expanded(child: SizedBox()),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -207,7 +208,7 @@ class ListScreen extends StatelessWidget {
                             color: Color.fromARGB(255, 242, 232, 207),
                           ),
                         ],
-                        borderRadius: BorderRadius.circular(9),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                         child: Text("Büro",
@@ -215,7 +216,11 @@ class ListScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const Expanded(child: SizedBox()),
                 ],
+              ),
+              const SizedBox(
+                height: 20,
               ),
             ],
           ),

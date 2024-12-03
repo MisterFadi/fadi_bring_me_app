@@ -14,11 +14,11 @@ class FolderScreen extends StatelessWidget {
     String newProduct = "Neuer Ordner"; // Beispiel-Produktname
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          "BringMe",
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
         actions: [
-          // Titel der App
-          Text("BringMe", style: Theme.of(context).textTheme.headlineLarge),
-          const SizedBox(width: 65),
-          // Button für das Hinzufügen eines Ordners
           IconButton(
             onPressed: () => timerSnackbar(
               context: context,
@@ -37,19 +37,22 @@ class FolderScreen extends StatelessWidget {
               size: 30,
             ),
           ),
-          const SizedBox(width: 20),
         ],
       ),
       body: SafeArea(
-        child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(
+              const SizedBox(
+                height: 2,
+              ),
+              Expanded(
                 child: Container(
-                  height: 580,
-                  width: 320,
+                  height: 400,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                     border: Border.all(
                         color: const Color.fromARGB(255, 29, 110, 45),
@@ -60,42 +63,48 @@ class FolderScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Center(
-                      child: FutureBuilder(
-                        future: repository.addProduct(newProduct),
-                        builder: (context, AsyncSnapshot<dynamic> snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const CircularProgressIndicator(
-                              color: Colors.white,
-                            );
-                          }
-                          if (snapshot.hasError) {
-                            return const Text(
-                              "Fehler beim Laden der Daten.",
-                              style: TextStyle(color: Colors.black),
-                            );
-                          }
-                          if (snapshot.hasData) {
-                            return const Text(
-                              "Diese Seite ist noch in Bearbeitung. \n\nHier erscheint bald eine Suchmaschine. \n\nWir bitten um Verständnis :)",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                height: 1.5,
-                              ),
-                              textAlign: TextAlign.center,
-                            );
-                          }
-                          return const Text(
-                            "Keine Daten vorhanden.",
-                            style: TextStyle(color: Colors.white),
-                          );
-                        },
+                      child: Column(
+                        children: [
+                          FutureBuilder(
+                            future: repository.addProduct(newProduct),
+                            builder:
+                                (context, AsyncSnapshot<dynamic> snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const CircularProgressIndicator(
+                                  color: Colors.white,
+                                );
+                              }
+                              if (snapshot.hasError) {
+                                return const Text(
+                                  "Fehler beim Laden der Daten.",
+                                  style: TextStyle(color: Colors.black),
+                                );
+                              }
+                              if (snapshot.hasData) {
+                                return const Text(
+                                  "Diese Seite ist noch in Bearbeitung. \n\nHier erscheint bald eine Suchmaschine. \n\nWir bitten um Verständnis :)",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    height: 1.5,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                );
+                              }
+                              return const Text(
+                                "Noch keine Daten vorhanden.",
+                                style: TextStyle(color: Colors.white),
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
               ),
+              const SizedBox(height: 2)
             ],
           ),
         ),

@@ -13,13 +13,13 @@ class MockDatabase implements DatabaseRepository {
 
   @override
   Future<List<CountryGroup>> getCountrys() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     return countrys;
   }
 
   @override
   Future<void> addProduct(String listProduct) async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     if (listProduct.isNotEmpty && !_items.contains(listProduct))
       _items.add(listProduct);
