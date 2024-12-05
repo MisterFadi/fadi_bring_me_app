@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RichtlinienWidget extends StatelessWidget {
   const RichtlinienWidget({
@@ -7,15 +8,51 @@ class RichtlinienWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print(
-            "Indem du BringMe verwendest, stimmst du unseren Nutzungs- und Datenschutzbestimmungen zu.");
-      },
-      child: Text(
-          "Indem du BringMe verwendest, stimmst du unseren Nutzungs- und Datenschutzbestimmungen zu.",
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.displaySmall),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: GestureDetector(
+          onTap: () {
+            // print("Indem du BringMe verwendest, stimmst du unseren Nutzungs- und Datenschutzbestimmungen zu.");
+          },
+          child: GestureDetector(
+            onTap: _launchUrl,
+            child: RichText(
+              text: TextSpan(
+                style: Theme.of(context).textTheme.displaySmall,
+                children: const <TextSpan>[
+                  TextSpan(
+                    text: "Indem du BringMe verwendest, stimmst du unseren ",
+                  ),
+                  TextSpan(
+                    text: "Nutzungs- und Datenschutzbestimmungen ",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(text: "zu"),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
+
+Future<void> _launchUrl() async {
+  final Uri url = Uri.parse(
+      "https://de.m.wikipedia.org/wiki/Allgemeine_Geschäftsbedingungen");
+  if (!await launchUrl(url)) {
+    throw Exception("Seite konnte nicht geladen werden $url");
+  }
+}
+
+
+/*
+          "Indem du BringMe verwendest, stimmst du unseren Nutzungs- und Datenschutzbestimmungen zu.",
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.displaySmall),
+    )
+  }
+}
+*/
