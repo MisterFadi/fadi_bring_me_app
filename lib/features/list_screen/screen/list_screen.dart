@@ -1,19 +1,26 @@
+import 'package:fadi_bring_me_app/features/search_list.dart';
 import 'package:fadi_bring_me_app/features/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 
-class ListScreen extends StatelessWidget {
+class ListScreen extends StatefulWidget {
   const ListScreen({
     super.key,
   });
 
   @override
+  State<ListScreen> createState() => _ListScreenState();
+}
+
+class _ListScreenState extends State<ListScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          "BringMe",
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
         actions: [
-          const Expanded(child: SizedBox()),
-          Text("BringMe", style: Theme.of(context).textTheme.headlineLarge),
-          const Expanded(child: SizedBox()),
           IconButton(
             onPressed: () {
               Navigator.push(
@@ -41,7 +48,7 @@ class ListScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ListScreen(),
+                      builder: (context) => const SearchList(),
                     ),
                   );
                 },
@@ -68,7 +75,7 @@ class ListScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ListScreen()));
+                          builder: (context) => const SearchList()));
                 },
                 child: Container(
                   height: 50,
@@ -93,7 +100,7 @@ class ListScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ListScreen()));
+                          builder: (context) => const SearchList()));
                 },
                 child: Container(
                   height: 50,
@@ -118,7 +125,7 @@ class ListScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ListScreen()));
+                          builder: (context) => const SearchList()));
                 },
                 child: Container(
                   height: 60,
@@ -147,7 +154,7 @@ class ListScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ListScreen()));
+                              builder: (context) => const SearchList()));
                     },
                     child: Container(
                       height: 150,
@@ -172,7 +179,7 @@ class ListScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ListScreen()));
+                              builder: (context) => const SearchList()));
                     },
                     child: Container(
                       height: 150,
@@ -197,7 +204,7 @@ class ListScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ListScreen()));
+                              builder: (context) => const SearchList()));
                     },
                     child: Container(
                       height: 150,

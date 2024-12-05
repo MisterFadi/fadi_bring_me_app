@@ -78,7 +78,7 @@ class SettingsScreen extends StatelessWidget {
           ),
         ],
       ),
-      //bottomNavigationBar: NavigationBar(destinations: destinations)
     );
+    //bottomNavigationBar: NavigationBar(destinations: destinations)
   }
 }
