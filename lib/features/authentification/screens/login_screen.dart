@@ -87,20 +87,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   contWidth: 150,
                   repository: widget.repository,
                 ),
-                const SizedBox(width: 40),
+                const Expanded(child: SizedBox()),
                 GestureDetector(
                   onTap: () {
-                    print("Sie haben ihr Passwort vergessen?");
+                    // print("Sie haben ihr Passwort vergessen?");
                   },
-                  child: Text("Passwort vergessen?",
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodySmall),
+                  child: Text(
+                    "Passwort vergessen?",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ),
+                const SizedBox(
+                  width: 30,
                 ),
               ],
             ),
             const SizedBox(height: 15),
             const OderDeviderWidget(),
-
             const SizedBox(height: 15),
             GestureDetector(
               onTap: () {
@@ -120,34 +124,34 @@ class _LoginScreenState extends State<LoginScreen> {
             //const SizedBox(height: 6),
             const SizedBox(height: 15),
             SocialLoginButton(
-              width: 350,
+              width: 300,
               borderRadius: 15,
               buttonType: SocialLoginButtonType.appleBlack,
               onPressed: () {
-                print("Apple");
+                //print("Apple");
               },
-              text: "Anmelden mit Apple",
+              //text: "Anmelden mit Apple",
             ),
             const SizedBox(height: 10),
             SocialLoginButton(
-              width: 350,
+              width: 300,
               borderRadius: 15,
               buttonType: SocialLoginButtonType.google,
               onPressed: () {
-                print("Google");
+                //print("Google");
               },
-              text: "Anmelden mit Google",
+              //text: "Anmelden mit Google",
             ),
-            const SizedBox(height: 10),
-            SocialLoginButton(
-              borderRadius: 15,
-              width: 350,
-              buttonType: SocialLoginButtonType.facebook,
-              onPressed: () {
-                print("Facebook");
-              },
-              text: "Anmelden mit Facebook",
-            ),
+            // const SizedBox(height: 10),
+            // SocialLoginButton(
+            //   borderRadius: 15,
+            //   width: 350,
+            //   buttonType: SocialLoginButtonType.facebook,
+            //   onPressed: () {
+            //     //print("Facebook");
+            //   },
+            //   text: "Anmelden mit Facebook",
+            // ),
             // const SizedBox(height: 80),
             const Spacer(),
             const RichtlinienWidget(),

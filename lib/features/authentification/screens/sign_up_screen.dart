@@ -64,7 +64,7 @@ class SignUpScreen extends StatelessWidget {
                     prefixIcon: const Icon(Icons.email),
                     // labelText: "Email",
                     // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
-                    hintText: "Email oder Telefonnummer",
+                    hintText: "Email oder Telefonnumme wiederholen",
                     hintStyle:
                         const TextStyle(fontSize: 12, color: Colors.grey),
                     filled: true,
@@ -112,7 +112,7 @@ class SignUpScreen extends StatelessWidget {
                     prefixIcon: const Icon(Icons.lock),
                     // labelText: "Passwort",
                     // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
-                    hintText: "Passwort",
+                    hintText: "Passwort wiederholen",
                     hintStyle:
                         const TextStyle(fontSize: 15, color: Colors.grey),
                     filled: true,

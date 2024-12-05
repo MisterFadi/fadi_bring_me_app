@@ -1,18 +1,42 @@
 import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
+import 'package:fadi_bring_me_app/features/folder_screen/widgets/task_counter_card.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timer_snackbar/timer_snackbar.dart';
 
-class FolderScreen extends StatelessWidget {
-  final DatabaseRepository repository;
+class FolderScreen extends StatefulWidget {
   const FolderScreen({
     super.key,
     required this.repository,
   });
+
+  final DatabaseRepository repository;
+  @override
+  State<FolderScreen> createState() => _FolderScreenState();
+}
+
+class _FolderScreenState extends State<FolderScreen> {
+  final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+
+  int currentTaskCount = 0;
+
+  void loadItemCount() async {
+    int taskCount = await widget.repository.productCount;
+
+    if (taskCount != currentTaskCount) {
+      setState(() {
+        currentTaskCount = taskCount;
+      });
+    }
+    // await prefs.setInt(counterName, _counter);
+  }
+
   @override
   Widget build(BuildContext context) {
     // Hier erstellen wir den String, der als "Produktname" übergeben wird.
     String newProduct = "Neuer Ordner"; // Beispiel-Produktname
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         title: Text(
           "BringMe",
@@ -66,7 +90,7 @@ class FolderScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           FutureBuilder(
-                            future: repository.addProduct(newProduct),
+                            future: widget.repository.addProduct(newProduct),
                             builder:
                                 (context, AsyncSnapshot<dynamic> snapshot) {
                               if (snapshot.connectionState ==
@@ -82,20 +106,16 @@ class FolderScreen extends StatelessWidget {
                                 );
                               }
                               if (snapshot.hasData) {
-                                return const Text(
-                                  "Diese Seite ist noch in Bearbeitung. \n\nHier erscheint bald eine Suchmaschine. \n\nWir bitten um Verständnis :)",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    height: 1.5,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                );
+                                return TaskCounterCard(
+                                    taskCount: currentTaskCount);
                               }
-                              return const Text(
+                              return TaskCounterCard(
+                                  taskCount: currentTaskCount);
+
+                              /* Text(
                                 "Noch keine Daten vorhanden.",
                                 style: TextStyle(color: Colors.white),
-                              );
+                              )*/
                             },
                           ),
                         ],

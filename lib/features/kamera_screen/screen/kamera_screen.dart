@@ -33,9 +33,9 @@ class _KameraScreenState extends State<KameraScreen> {
                     // );
                     Navigator.of(context).pop(); // Dialog schließen
                   },
-                  child: Text("Abbrechen"),
                   style: TextButton.styleFrom(
                       textStyle: Theme.of(context).textTheme.bodyMedium),
+                  child: const Text("Abbrechen"),
                 ),
                 TextButton(
                   onPressed: () {
@@ -47,9 +47,9 @@ class _KameraScreenState extends State<KameraScreen> {
                     // );
                     Navigator.of(context).pop(); // Dialog schließen
                   },
-                  child: const Text("Erlauben"),
                   style: TextButton.styleFrom(
                       textStyle: Theme.of(context).textTheme.bodyLarge),
+                  child: const Text("Erlauben"),
                 ),
               ],
             );
@@ -62,15 +62,17 @@ class _KameraScreenState extends State<KameraScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: const SafeArea(
-        child: Center(
+        appBar: AppBar(),
+        body: const SafeArea(
           child: Center(
-            child: Image(image: AssetImage("assets/images/Kamera_open.png")),
+            child: Center(
+              child: Image(image: AssetImage("assets/images/Kamera_open.png")),
+            ),
           ),
         ),
-      ),
-      //bottomNavigationBar: NavigationBar(destinations: destinations)
-    );
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor
+
+        //bottomNavigationBar: NavigationBar(destinations: destinations)
+        );
   }
 }
