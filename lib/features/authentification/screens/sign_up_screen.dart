@@ -3,12 +3,20 @@ import 'package:fadi_bring_me_app/shared/anmelde_button.dart';
 import 'package:fadi_bring_me_app/shared/richtlinien_widget.dart';
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   final DatabaseRepository repository;
   const SignUpScreen({
     super.key,
     required this.repository,
   });
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  bool showPassword = true;
+  bool showNewPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -80,11 +88,26 @@ class SignUpScreen extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                 child: TextFormField(
-                  obscureText: true,
+                  obscureText: showPassword,
                   style: const TextStyle(color: Colors.black54),
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                          showPassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.black),
+                      onPressed: () {
+                        setState(
+                          () {
+                            showPassword = !showPassword; // Sichtbarkeeit
+                          },
+                        );
+                      },
+                    ),
+
                     prefixIcon: const Icon(Icons.lock),
                     // labelText: "Passwort",
                     // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
@@ -104,11 +127,25 @@ class SignUpScreen extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                 child: TextFormField(
-                  obscureText: true,
+                  obscureText: showNewPassword,
                   style: const TextStyle(color: Colors.black54),
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                          showNewPassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.black),
+                      onPressed: () {
+                        setState(
+                          () {
+                            showNewPassword = !showNewPassword; // Sichtbarkeeit
+                          },
+                        );
+                      },
+                    ),
                     prefixIcon: const Icon(Icons.lock),
                     // labelText: "Passwort",
                     // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
@@ -127,7 +164,7 @@ class SignUpScreen extends StatelessWidget {
               AnmeldeButton(
                 contHeight: 60,
                 contWidth: 330,
-                repository: repository,
+                repository: widget.repository,
               ),
               const Spacer(),
               const RichtlinienWidget(),
