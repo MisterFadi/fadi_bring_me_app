@@ -25,7 +25,7 @@ class RichtlinienWidget extends StatelessWidget {
                     text: "Indem du BringMe verwendest, stimmst du unseren ",
                   ),
                   TextSpan(
-                    text: "Nutzungs- und Datenschutzbestimmungen ",
+                    text: "Nutzungs- und \nDatenschutzbestimmungen ",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextSpan(text: "zu"),
