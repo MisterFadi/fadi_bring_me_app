@@ -5,6 +5,7 @@ import 'package:fadi_bring_me_app/shared/anmelde_button.dart';
 import 'package:fadi_bring_me_app/shared/richtlinien_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginScreen extends StatefulWidget {
   final DatabaseRepository repository;
@@ -16,7 +17,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool showPassword = false;
+  bool showPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -60,12 +61,25 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
               child: TextFormField(
-                obscureText: true,
+                obscureText: showPassword,
                 style: const TextStyle(color: Colors.black54),
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.lock),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                        showPassword ? Icons.visibility_off : Icons.visibility,
+                        color: Colors.black),
+                    onPressed: () {
+                      setState(
+                        () {
+                          showPassword = !showPassword; // Sichtbarkeeit
+                        },
+                      );
+                    },
+                  ),
+
                   // labelText: "Passwort",
                   // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
                   hintText: "Passwort",
@@ -115,11 +129,28 @@ class _LoginScreenState extends State<LoginScreen> {
                               repository: widget.repository,
                             )));
               },
-              child: Text(
-                "Noch kein Account? Hier Registrieren",
-                style: Theme.of(context).textTheme.bodyMedium,
-                textAlign: TextAlign.right,
+              child: RichText(
+                text: TextSpan(
+                  style: Theme.of(context).textTheme.displaySmall,
+                  children: const <TextSpan>[
+                    TextSpan(
+                      text: "Noch kein Account? ",
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    ),
+                    TextSpan(
+                        text: "Hier Registrieren",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold)),
+                  ],
+                ),
               ),
+              // child: Text(
+              //   "Noch kein Account? Hier Registrieren",
+              //   style: Theme.of(context).textTheme.bodyMedium,
+              //   textAlign: TextAlign.right,
+              // ),
             ),
             //const SizedBox(height: 6),
             const SizedBox(height: 15),
@@ -128,6 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
               borderRadius: 15,
               buttonType: SocialLoginButtonType.appleBlack,
               onPressed: () {
+                _launchUrlA();
                 //print("Apple");
               },
               //text: "Anmelden mit Apple",
@@ -138,26 +170,33 @@ class _LoginScreenState extends State<LoginScreen> {
               borderRadius: 15,
               buttonType: SocialLoginButtonType.google,
               onPressed: () {
+                _launchUrlG();
                 //print("Google");
               },
               //text: "Anmelden mit Google",
             ),
-            // const SizedBox(height: 10),
-            // SocialLoginButton(
-            //   borderRadius: 15,
-            //   width: 350,
-            //   buttonType: SocialLoginButtonType.facebook,
-            //   onPressed: () {
-            //     //print("Facebook");
-            //   },
-            //   text: "Anmelden mit Facebook",
-            // ),
-            // const SizedBox(height: 80),
             const Spacer(),
             const RichtlinienWidget(),
           ],
         ),
       ),
     );
+  }
+}
+
+// Anmedelnde mit Apple
+Future<void> _launchUrlA() async {
+  final Uri urla = Uri.parse("https://support.apple.com/de-de/108647");
+  if (!await launchUrl(urla)) {
+    throw Exception("Seite konnte nicht geladen werden $urla");
+  }
+}
+
+// Anmelden mit Google
+Future<void> _launchUrlG() async {
+  final Uri urlg = Uri.parse(
+      "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmyaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dgo-to-account-button%26gar%3DWzEzMywiMjM2NzM2Il0%26sl%3Dtrue&ifkv=AcMMx-fDv4ESgor_zUcoT4WS1kMxjPi5GfLtGy_ldidV55I1zPusVPPF6pvPUNoWjZyAVWhmS4rv&service=accountsettings&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S991440918%3A1733412585038140&ddm=1");
+  if (!await launchUrl(urlg)) {
+    throw Exception("Seite konnte nicht geladen werden $urlg");
   }
 }

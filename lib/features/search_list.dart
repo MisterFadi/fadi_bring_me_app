@@ -113,13 +113,14 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-        onPressed: () {
-          close(context, null);
-        },
-        icon: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ));
+      onPressed: () {
+        close(context, null);
+      },
+      icon: const Icon(
+        Icons.arrow_back,
+        color: Colors.black,
+      ),
+    );
   }
 
   @override
