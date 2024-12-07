@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class KameraScreen extends StatefulWidget {
   const KameraScreen({
@@ -11,6 +13,8 @@ class KameraScreen extends StatefulWidget {
 }
 
 class _KameraScreenState extends State<KameraScreen> {
+  File? _selectedImage;
+/*
   @override
   void initState() {
     super.initState();
@@ -58,16 +62,49 @@ class _KameraScreenState extends State<KameraScreen> {
       },
     );
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
-        body: const SafeArea(
+        body: SafeArea(
           child: Center(
-            child: Center(
-              child: Image(image: AssetImage("assets/images/Kamera_open.png")),
+            child: Column(
+              children: [
+                const SizedBox(height: 30),
+                MaterialButton(
+                  color: Colors.blue,
+                  onPressed: () {
+                    _pickImageFromGallery();
+                  },
+                  child: const Text(
+                    "     Gallery       ",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                MaterialButton(
+                  color: Colors.red,
+                  onPressed: () {
+                    _pickImageFromKamera();
+                  },
+                  child: const Text(
+                    "      Kamera       ",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(height: 50),
+                _selectedImage != null
+                    ? Image.file(_selectedImage!)
+                    : const Text("Bitte auswählen")
+              ],
             ),
+
+            //child: Image(image: AssetImage("assets/images/Kamera_open.png")),
           ),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor
@@ -75,4 +112,33 @@ class _KameraScreenState extends State<KameraScreen> {
         //bottomNavigationBar: NavigationBar(destinations: destinations)
         );
   }
+
+  Future _pickImageFromGallery() async {
+    final returnedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (returnedImage == null) return;
+    setState(() {
+      _selectedImage = File(returnedImage.path);
+    });
+  }
+
+  Future _pickImageFromKamera() async {
+    final returnedImage =
+        await ImagePicker().pickImage(source: ImageSource.camera);
+    if (returnedImage == null) return;
+    setState(() {
+      _selectedImage = File(returnedImage.path);
+    });
+  }
+/*
+  chooseImage() async {
+    final getImage = await ImagePicker().getImage(
+      source: ImageSource.camera,
+    );
+    setState(() {
+      if (getImage != null) {
+        imageFile = File(getImage.path);
+      }
+    });
+  }*/
 }

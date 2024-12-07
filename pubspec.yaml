@@ -7,25 +7,25 @@ environment:
   sdk: ^3.5.2
 
 dependencies:
-  flutter:
-    sdk: flutter 
-  flutter_launcher_icons: ^0.14.1 
-  social_login_buttons: ^1.0.7
-  social_media_buttons: ^1.0.0
-  webview_flutter: ^4.10.0
-  url_launcher: ^6.3.1
-  easy_url_launcher: ^0.0.7
-  loading_elevated_button: ^1.0.0+2
-  timer_snackbar: ^0.0.3
   dropdown_textfield: ^1.2.0
+  easy_url_launcher: ^0.0.7
+  flutter:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.1
+  image_picker: ^1.1.2
+  loading_elevated_button: ^1.0.0+2
   shared_preferences: ^2.3.2
   shimmer: ^3.0.0
-
+  social_login_buttons: ^1.0.7
+  social_media_buttons: ^1.0.0
+  timer_snackbar: ^0.0.3
+  url_launcher: ^6.3.1
+  webview_flutter: ^4.10.0
 
 dev_dependencies:
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
@@ -33,7 +33,6 @@ flutter:
     - assets/logo/
     - assets/images/
     - assets/gif/
-
 
 flutter_launcher_icons:
   android: true
