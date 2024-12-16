@@ -1,4 +1,4 @@
-import 'package:fadi_bring_me_app/features/settings/settings_screen.dart';
+import 'package:fadi_bring_me_app/features/settings/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class CardScreen extends StatelessWidget {
@@ -58,7 +58,7 @@ class CardScreen extends StatelessWidget {
                         children: [
                           const Expanded(
                             child: SizedBox(),
-                          ), //!-------------------------------------------- Nicht hart cooden
+                          ), //!---------- Nicht hart cooden
                           Text(
                             "Es befindet sich zur Zeit findet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenknichtfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenks im Warenkorb",
                             style: Theme.of(context).textTheme.bodyLarge,
