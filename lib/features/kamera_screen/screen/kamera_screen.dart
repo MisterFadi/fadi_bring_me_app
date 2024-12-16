@@ -104,7 +104,7 @@ class _KameraScreenState extends State<KameraScreen> {
                         _selectedImage!,
                         scale: 0.5,
                       )
-                    : const Text("Bitte auswählen")
+                    : const Text("Bitte ein Bild hinzufügen")
               ],
             ),
 
