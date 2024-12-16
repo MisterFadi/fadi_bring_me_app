@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -89,7 +90,7 @@ class _KameraScreenState extends State<KameraScreen> {
                 MaterialButton(
                   color: Colors.red,
                   onPressed: () {
-                    _pickImageFromKamera();
+                    _pickImageFromCamera();
                   },
                   child: const Text(
                     "      Kamera       ",
@@ -97,9 +98,12 @@ class _KameraScreenState extends State<KameraScreen> {
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 _selectedImage != null
-                    ? Image.file(_selectedImage!)
+                    ? Image.file(
+                        _selectedImage!,
+                        scale: 0.5,
+                      )
                     : const Text("Bitte auswählen")
               ],
             ),
@@ -122,7 +126,7 @@ class _KameraScreenState extends State<KameraScreen> {
     });
   }
 
-  Future _pickImageFromKamera() async {
+  Future _pickImageFromCamera() async {
     final returnedImage =
         await ImagePicker().pickImage(source: ImageSource.camera);
     if (returnedImage == null) return;
