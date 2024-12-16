@@ -1,4 +1,4 @@
-import 'package:fadi_bring_me_app/features/settings/settings_screen.dart';
+import 'package:fadi_bring_me_app/features/settings/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfilScreen extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:fadi_bring_me_app/features/search_list.dart';
-import 'package:fadi_bring_me_app/features/settings/settings_screen.dart';
+import 'package:fadi_bring_me_app/features/settings/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class ListScreen extends StatefulWidget {
