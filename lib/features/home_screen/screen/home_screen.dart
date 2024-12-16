@@ -5,13 +5,11 @@ import 'package:fadi_bring_me_app/features/authentification/screens/login_screen
 import 'package:fadi_bring_me_app/features/authentification/widgets/steck_brief_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
-  final DatabaseRepository repository;
-
   const HomeScreen({
     super.key,
-    required this.repository,
   });
 
   @override
@@ -52,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                 child: Scrollbar(
                   trackVisibility: true,
                   child: FutureBuilder(
-                    future: repository.getCountrys(),
+                    future: context.read<DatabaseRepository>().getCountrys(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         // Ladeanzeige
@@ -73,7 +71,8 @@ class HomeScreen extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) => LoginScreen(
                                     language: snapshot.data![index].imageTitle,
-                                    repository: repository,
+                                    repository:
+                                        context.read<DatabaseRepository>(),
                                   ),
                                 ),
                               );
