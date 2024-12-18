@@ -38,4 +38,10 @@ class SharedPreferencesRepository implements DatabaseRepository {
     await Future.delayed(const Duration(milliseconds: 100));
     return _items.length;
   }
+
+  @override
+  Future<void> signInWithGoogle() {
+    // TODO: implement signInWithGoogle
+    throw UnimplementedError();
+  }
 }

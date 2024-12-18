@@ -15,4 +15,6 @@ abstract class DatabaseRepository {
 
   // Aktualisiert den Name des Produkts
   Future<void> editProduct(int index, String newItem);
+
+  Future<void> signInWithGoogle();
 }

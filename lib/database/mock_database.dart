@@ -38,4 +38,10 @@ class MockDatabase implements DatabaseRepository {
       _items[index] = newItem;
     }
   }
+
+  @override
+  Future<void> signInWithGoogle() {
+    // TODO: implement signInWithGoogle
+    throw UnimplementedError();
+  }
 }
