@@ -1,16 +1,19 @@
-import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
+import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:fadi_bring_me_app/features/authentification/screens/sign_up_screen.dart';
 import 'package:fadi_bring_me_app/features/authentification/widgets/oder_devider_widget.dart';
+import 'package:fadi_bring_me_app/features/list_screen/screen/list_screen.dart';
 import 'package:fadi_bring_me_app/shared/anmelde_button.dart';
 import 'package:fadi_bring_me_app/shared/richtlinien_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LoginScreen extends StatefulWidget {
-  final DatabaseRepository repository;
-  const LoginScreen(
-      {super.key, required String language, required this.repository});
+  const LoginScreen({
+    super.key,
+    required String language,
+  });
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -96,10 +99,9 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               children: [
                 const SizedBox(width: 27),
-                AnmeldeButton(
+                const AnmeldeButton(
                   contHeight: 50,
                   contWidth: 150,
-                  repository: widget.repository,
                 ),
                 const Expanded(child: SizedBox()),
                 GestureDetector(
@@ -125,9 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SignUpScreen(
-                              repository: widget.repository,
-                            )));
+                        builder: (context) => const SignUpScreen()));
               },
               child: RichText(
                 text: TextSpan(
@@ -165,16 +165,34 @@ class _LoginScreenState extends State<LoginScreen> {
               //text: "Anmelden mit Apple",
             ),
             const SizedBox(height: 10),
-            SocialLoginButton(
-              width: 300,
-              borderRadius: 15,
-              buttonType: SocialLoginButtonType.google,
+            TextButton(
               onPressed: () {
-                _launchUrlG();
-                //print("Google");
+                context.read<AuthRepo>().signInWithGoogle();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const ListScreen(),
+                  ),
+                );
               },
-              //text: "Anmelden mit Google",
+              child: const Text("Register with Google"),
             ),
+
+            SocialLoginButton(
+                width: 300,
+                borderRadius: 15,
+                buttonType: SocialLoginButtonType.google,
+                onPressed: () {
+                  context.read<AuthRepo>().signInWithGoogle();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ListScreen(),
+                    ),
+                  );
+                }
+                // _launchUrlG();
+                //print("Google");
+                //text: "Anmelden mit Google",
+                ),
             const Spacer(),
             const RichtlinienWidget(),
           ],

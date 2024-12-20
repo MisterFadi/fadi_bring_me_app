@@ -1,4 +1,3 @@
-import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/features/card_screen/screen/card_screen.dart';
 import 'package:fadi_bring_me_app/features/folder_screen/screen/folder_screen.dart';
 import 'package:fadi_bring_me_app/features/kamera_screen/screen/kamera_screen.dart';
@@ -7,8 +6,10 @@ import 'package:fadi_bring_me_app/features/profil_screen/screen/profil_sreen.dar
 import 'package:flutter/material.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
-  const BottomNavBarWidget({super.key, required this.repository});
-  final DatabaseRepository repository; // repository wird hier übergeben
+  const BottomNavBarWidget({
+    super.key,
+  });
+
   @override
   State<BottomNavBarWidget> createState() => _BottomNavBarWidgetState();
 }
@@ -20,7 +21,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     // Jetzt übergeben wir repository an FolderScreen
     final List<Widget> widgets = [
       const ListScreen(),
-      FolderScreen(repository: widget.repository), // Hier repository übergeben
+      const FolderScreen(), // Hier repository übergeben
       const KameraScreen(),
       const CardScreen(),
       const ProfilScreen(),

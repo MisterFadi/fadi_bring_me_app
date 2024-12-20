@@ -1,16 +1,17 @@
+import 'dart:developer' as dev;
+
 import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/features/folder_screen/widgets/task_counter_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timer_snackbar/timer_snackbar.dart';
 
 class FolderScreen extends StatefulWidget {
   const FolderScreen({
     super.key,
-    required this.repository,
   });
 
-  final DatabaseRepository repository;
   @override
   State<FolderScreen> createState() => _FolderScreenState();
 }
@@ -21,7 +22,7 @@ class _FolderScreenState extends State<FolderScreen> {
   int currentTaskCount = 0;
 
   void loadItemCount() async {
-    int taskCount = await widget.repository.productCount;
+    int taskCount = await context.read<DatabaseRepository>().productCount;
 
     if (taskCount != currentTaskCount) {
       setState(() {
@@ -52,7 +53,7 @@ class _FolderScreenState extends State<FolderScreen> {
                 color: Colors.white,
               ),
               afterTimeExecute: () =>
-                  print("Ein neuer Ordner wurde hinzugefügt."),
+                  dev.log("Ein neuer Ordner wurde hinzugefügt."),
               second: 5, // Benachrichtigung nach 5 Sekunden
             ),
             icon: const Icon(
@@ -90,7 +91,9 @@ class _FolderScreenState extends State<FolderScreen> {
                       child: Column(
                         children: [
                           FutureBuilder(
-                            future: widget.repository.addProduct(newProduct),
+                            future: context
+                                .read<DatabaseRepository>()
+                                .addProduct(newProduct),
                             builder:
                                 (context, AsyncSnapshot<dynamic> snapshot) {
                               if (snapshot.connectionState ==

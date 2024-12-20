@@ -50,7 +50,9 @@ class HomeScreen extends StatelessWidget {
                 child: Scrollbar(
                   trackVisibility: true,
                   child: FutureBuilder(
-                    future: context.read<DatabaseRepository>().getCountrys(),
+                    future: context
+                        .read<DatabaseRepository>()
+                        .getCountrys(), //! Hier war die Veränderung
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         // Ladeanzeige
@@ -71,8 +73,6 @@ class HomeScreen extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) => LoginScreen(
                                     language: snapshot.data![index].imageTitle,
-                                    repository:
-                                        context.read<DatabaseRepository>(),
                                   ),
                                 ),
                               );

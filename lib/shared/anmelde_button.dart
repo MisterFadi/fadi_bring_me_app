@@ -1,14 +1,11 @@
-import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/shared/bottom_nav_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class AnmeldeButton extends StatelessWidget {
-  final DatabaseRepository repository;
   const AnmeldeButton({
     super.key,
     required this.contHeight,
     required this.contWidth,
-    required this.repository,
   });
   final double contHeight;
   final double contWidth;
@@ -17,11 +14,8 @@ class AnmeldeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    BottomNavBarWidget(repository: repository)));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => BottomNavBarWidget()));
       },
       child: Container(
         height: contHeight,
