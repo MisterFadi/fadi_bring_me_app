@@ -1,9 +1,11 @@
 import 'package:fadi_bring_me_app/config/themes.dart';
-import 'package:fadi_bring_me_app/database/mock_database.dart';
+import 'package:fadi_bring_me_app/database/firebase/firebase_auth_repo.dart';
+import 'package:fadi_bring_me_app/database/firebase/firebase_database_repo.dart';
+import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/features/home_screen/screen/home_screen.dart';
 import 'package:fadi_bring_me_app/firebase_options.dart';
-import 'package:fadi_bring_me_app/splash/splash_screen.dart';
+import 'package:fadi_bring_me_app/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,9 +17,8 @@ void main() async {
   );
   // final repository = MockDatabase();
   runApp(MultiProvider(providers: [
-    Provider<DatabaseRepository>(
-      create: (context) => MockDatabase(),
-    )
+    Provider<DatabaseRepository>(create: (context) => FirebaseDatabaseRepo()),
+    Provider<AuthRepo>(create: (context) => FirebaseAuthRepo())
   ], child: const MainApp()));
 }
 
@@ -39,7 +40,7 @@ class MainApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) => const SplashScreen(),
-        '/home': (context) => const Scaffold(
+        "/home": (context) => const Scaffold(
               body: HomeScreen(),
             ),
       },
