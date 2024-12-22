@@ -21,6 +21,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool showPassword = true;
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +42,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 150,
               ),
             ),
-            const SizedBox(height: 15),
+            const Expanded(child: SizedBox()),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
               child: TextFormField(
+                controller: emailController,
                 style: const TextStyle(color: Colors.black54),
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.emailAddress,
@@ -64,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
               child: TextFormField(
+                controller: passwordController,
                 obscureText: showPassword,
                 style: const TextStyle(color: Colors.black54),
                 textInputAction: TextInputAction.next,
@@ -153,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // ),
             ),
             //const SizedBox(height: 6),
-            const SizedBox(height: 15),
+            const Expanded(child: SizedBox()),
             SocialLoginButton(
               width: 300,
               borderRadius: 15,
@@ -165,6 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
               //text: "Anmelden mit Apple",
             ),
             const SizedBox(height: 10),
+            /*
             TextButton(
               onPressed: () {
                 context.read<AuthRepo>().signInWithGoogle();
@@ -176,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               child: const Text("Register with Google"),
             ),
-
+            */
             SocialLoginButton(
                 width: 300,
                 borderRadius: 15,
@@ -210,11 +215,11 @@ Future<void> _launchUrlA() async {
   }
 }
 
-// Anmelden mit Google
-Future<void> _launchUrlG() async {
-  final Uri urlg = Uri.parse(
-      "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmyaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dgo-to-account-button%26gar%3DWzEzMywiMjM2NzM2Il0%26sl%3Dtrue&ifkv=AcMMx-fDv4ESgor_zUcoT4WS1kMxjPi5GfLtGy_ldidV55I1zPusVPPF6pvPUNoWjZyAVWhmS4rv&service=accountsettings&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S991440918%3A1733412585038140&ddm=1");
-  if (!await launchUrl(urlg)) {
-    throw Exception("Seite konnte nicht geladen werden $urlg");
-  }
-}
+// // Anmelden mit Google
+// Future<void> _launchUrlG() async {
+//   final Uri urlg = Uri.parse(
+//       "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmyaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dgo-to-account-button%26gar%3DWzEzMywiMjM2NzM2Il0%26sl%3Dtrue&ifkv=AcMMx-fDv4ESgor_zUcoT4WS1kMxjPi5GfLtGy_ldidV55I1zPusVPPF6pvPUNoWjZyAVWhmS4rv&service=accountsettings&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S991440918%3A1733412585038140&ddm=1");
+//   if (!await launchUrl(urlg)) {
+//     throw Exception("Seite konnte nicht geladen werden $urlg");
+//   }
+
