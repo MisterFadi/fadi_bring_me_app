@@ -1,7 +1,10 @@
-import 'package:fadi_bring_me_app/shared/bottom_nav_bar_widget.dart';
-import 'package:flutter/material.dart';
+import 'dart:developer' as dev;
 
-class AnmeldeButton extends StatelessWidget {
+import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+class AnmeldeButton extends StatefulWidget {
   const AnmeldeButton({
     super.key,
     required this.contHeight,
@@ -11,15 +14,39 @@ class AnmeldeButton extends StatelessWidget {
   final double contWidth;
 
   @override
+  State<AnmeldeButton> createState() => _AnmeldeButtonState();
+}
+
+class _AnmeldeButtonState extends State<AnmeldeButton> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  Future<void> login() async {
+    final authRepo = Provider.of<AuthRepo>(context, listen: false);
+    try {
+      await authRepo.signInWithEmailAndPassword(
+        emailController.text.trim(),
+        passwordController.text.trim(),
+      );
+      // ignore: use_build_context_synchronously
+      Navigator.pushNamed(context, "/bottomnavigationbarmain");
+    } catch (e) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Login fehlgeschlagen: ${e.toString()}")),
+      );
+
+      dev.log("Fehler beim Login: $e");
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => BottomNavBarWidget()));
-      },
+      onTap: login,
       child: Container(
-        height: contHeight,
-        width: contWidth,
+        height: widget.contHeight,
+        width: widget.contWidth,
         decoration: BoxDecoration(
           border: Border.all(width: 0.5),
           boxShadow: const [
