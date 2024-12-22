@@ -50,9 +50,7 @@ class HomeScreen extends StatelessWidget {
                 child: Scrollbar(
                   trackVisibility: true,
                   child: FutureBuilder(
-                    future: context
-                        .read<DatabaseRepository>()
-                        .getCountrys(), //! Hier war die Veränderung
+                    future: context.read<DatabaseRepository>().getCountrys(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         // Ladeanzeige
