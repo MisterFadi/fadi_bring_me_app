@@ -1,4 +1,7 @@
+import 'package:fadi_bring_me_app/database/firebase/firebase_auth_repo.dart';
+import 'package:fadi_bring_me_app/features/home_screen/screen/home_screen.dart';
 import 'package:fadi_bring_me_app/features/settings/screens/settings_screen.dart';
+import 'package:fadi_bring_me_app/shared/abmelden_button.dart';
 import 'package:flutter/material.dart';
 
 class ProfilScreen extends StatelessWidget {
@@ -46,8 +49,7 @@ class ProfilScreen extends StatelessWidget {
                   Text("Fadi Bdiwi",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headlineMedium),
-                  Text("email1234@gmail.com",
-                      textAlign: TextAlign.center,
+                  Text(FirebaseAuthRepo().currentUser!.email!.toString(),
                       style: Theme.of(context).textTheme.bodyMedium),
                   const SizedBox(height: 20),
                   Container(
@@ -78,6 +80,17 @@ class ProfilScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                  ),
+                  const SizedBox(height: 30),
+                  AbmeldenButton(
+                    text: "Abmelden",
+                    onPressed: () {
+                      FirebaseAuthRepo().signOut();
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()),
+                      );
+                    },
                   ),
                 ],
               ),
