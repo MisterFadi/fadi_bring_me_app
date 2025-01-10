@@ -69,7 +69,8 @@ class FirebaseAuthRepo implements AuthRepo {
 
   @override
   Future<void> signOut() async {
-    await firebaseAuth.signOut();
+    print("Du bist abgemeldet");
     await googleSignIn.signOut();
+    await firebaseAuth.signOut();
   }
 }
