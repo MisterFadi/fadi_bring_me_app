@@ -7,6 +7,7 @@ environment:
   sdk: ^3.5.2
 
 dependencies:
+  carousel_images: ^1.1.2
   dropdown_textfield: ^1.2.0
   easy_url_launcher: ^0.0.7
   firebase_auth: ^5.3.4
@@ -17,12 +18,14 @@ dependencies:
   google_sign_in: ^6.2.2
   image_picker: ^1.1.2
   loading_elevated_button: ^1.0.0+2
+  overlapped_carousel: ^1.0.2
   provider: ^6.1.2
   shared_preferences: ^2.3.2
   social_login_buttons: ^1.0.7
   social_media_buttons: ^1.0.0
   timer_snackbar: ^0.0.3
   url_launcher: ^6.3.1
+  vertical_card_pager: ^1.6.2
   webview_flutter: ^4.10.0
 
 dev_dependencies:
