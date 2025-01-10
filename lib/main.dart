@@ -3,9 +3,9 @@ import 'package:fadi_bring_me_app/database/firebase/firebase_auth_repo.dart';
 import 'package:fadi_bring_me_app/database/firebase/firebase_database_repo.dart';
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
-import 'package:fadi_bring_me_app/features/authentification/screens/login_screen.dart';
 import 'package:fadi_bring_me_app/features/home_screen/screen/home_screen.dart';
 import 'package:fadi_bring_me_app/firebase_options.dart';
+import 'package:fadi_bring_me_app/shared/bottom_nav_bar_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -52,11 +52,15 @@ class MainApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.active) {
             if (user == null) {
               return const HomeScreen();
+              // return const HomeScreen();
             } else {
-              return const LoginScreen(
-                language: '',
-              );
+              return const BottomNavBarWidget();
             }
+            // {
+            //   return const LoginScreen(
+            //     language: '',
+            //   );
+            // }
           }
           return const Center(child: CircularProgressIndicator());
         },
