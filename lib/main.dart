@@ -6,6 +6,7 @@ import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/features/home_screen/screen/home_screen.dart';
 import 'package:fadi_bring_me_app/firebase_options.dart';
 import 'package:fadi_bring_me_app/shared/bottom_nav_bar_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,36 +36,25 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authRepo = Provider.of<AuthRepo>(context, listen: false);
-    return MaterialApp(
-      theme: myTheme,
-      debugShowCheckedModeBanner: false,
-      // initialRoute: "/",
-      // routes: {
-      //   "/": (context) => const SplashScreen(),
-      //   "/home": (context) => const Scaffold(
-      //         body: HomeScreen(),
-      //       ),
-      // },
-      home: StreamBuilder(
+    return StreamBuilder<User?>(
         stream: authRepo.authStateChanges,
         builder: (context, snapshot) {
-          final user = snapshot.data;
-          if (snapshot.connectionState == ConnectionState.active) {
-            if (user == null) {
-              return const HomeScreen();
-              // return const HomeScreen();
-            } else {
-              return const BottomNavBarWidget();
-            }
-            // {
-            //   return const LoginScreen(
-            //     language: '',
-            //   );
-            // }
-          }
-          return const Center(child: CircularProgressIndicator());
-        },
-      ),
-    );
+          final isLoggedIn = snapshot.data?.uid != null;
+
+          return MaterialApp(
+              key: ValueKey(isLoggedIn),
+              theme: myTheme,
+              debugShowCheckedModeBanner: false,
+
+              // initialRoute: "/",
+              // routes: {
+              //   "/": (context) => const SplashScreen(),
+              //   "/home": (context) => const Scaffold(
+              //         body: HomeScreen(),
+              //       ),
+              // },
+              home:
+                  isLoggedIn ? const BottomNavBarWidget() : const HomeScreen());
+        });
   }
 }

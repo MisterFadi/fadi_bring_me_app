@@ -1,7 +1,6 @@
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:fadi_bring_me_app/features/authentification/screens/sign_up_screen.dart';
 import 'package:fadi_bring_me_app/features/authentification/widgets/oder_devider_widget.dart';
-import 'package:fadi_bring_me_app/features/list_screen/screen/list_screen.dart';
 import 'package:fadi_bring_me_app/shared/anmelde_button.dart';
 import 'package:fadi_bring_me_app/shared/richtlinien_widget.dart';
 import 'package:flutter/material.dart';
@@ -188,11 +187,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 buttonType: SocialLoginButtonType.google,
                 onPressed: () {
                   context.read<AuthRepo>().signInWithGoogle();
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const ListScreen(),
-                    ),
-                  );
                 }
                 // _launchUrlG();
                 //print("Google");

@@ -1,10 +1,11 @@
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:fadi_bring_me_app/shared/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SharedPreferencesAuth implements AuthRepo {
   @override
   // TODO: implement authStateChanges
-  Stream<AppUser?> get authStateChanges => throw UnimplementedError();
+  Stream<User?> get authStateChanges => throw UnimplementedError();
 
   @override
   Future<AppUser?> createUserWithEmailAndPassword(

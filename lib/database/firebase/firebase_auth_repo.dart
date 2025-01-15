@@ -8,22 +8,24 @@ class FirebaseAuthRepo implements AuthRepo {
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
   @override
-  Future<AppUser?> signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-    if (googleUser == null) return null;
-
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    final authResult = await firebaseAuth.signInWithCredential(credential);
-    final user = authResult.user;
-    if (user == null) return null;
-
-    return AppUser(userId: user.uid, email: user.email);
+  Future<dynamic> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      await firebaseAuth.signInWithCredential(credential);
+      print("Logged In Google");
+    } on Exception catch (e) {
+      print('exception->$e');
+    } catch (e, s) {
+      print(e);
+      print(s);
+    }
+    return;
   }
 
   @override
@@ -37,18 +39,7 @@ class FirebaseAuthRepo implements AuthRepo {
   }
 
   @override
-  Stream<AppUser?> get authStateChanges {
-    return firebaseAuth.authStateChanges().map((firebaseUser) {
-      if (firebaseUser == null) {
-        return null;
-      } else {
-        return AppUser(
-          userId: firebaseUser.uid,
-          email: firebaseUser.email,
-        );
-      }
-    });
-  }
+  Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
 
   @override
   Future<AppUser?> createUserWithEmailAndPassword(
