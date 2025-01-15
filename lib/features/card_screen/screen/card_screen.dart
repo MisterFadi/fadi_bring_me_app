@@ -1,11 +1,15 @@
 import 'package:fadi_bring_me_app/features/settings/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class CardScreen extends StatelessWidget {
   const CardScreen({
     super.key,
   });
 
+  Future<void> handleRefresh() async {
+    // reloading takes some time
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,30 +45,33 @@ class CardScreen extends StatelessWidget {
                 height: 2,
               ),
               Expanded(
-                child: Container(
-                  height: 400,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                        color: const Color.fromARGB(255, 29, 110, 45),
-                        width: 0.5),
-                    color: Colors.green.shade800,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Expanded(
-                      child: ListView(
-                        children: [
-                          const Expanded(
-                            child: SizedBox(),
-                          ), //!---------- Nicht hart cooden
-                          Text(
-                            "Es befindet sich zur Zeit findet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenknichtfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenks im Warenkorb",
-                            style: Theme.of(context).textTheme.bodyLarge,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                child: LiquidPullToRefresh(
+                  onRefresh: handleRefresh,
+                  child: Container(
+                    height: 100,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 29, 110, 45),
+                          width: 0.5),
+                      color: Colors.green.shade800,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Expanded(
+                        child: ListView(
+                          children: [
+                            const Expanded(
+                              child: SizedBox(),
+                            ), //!---------- Nicht hart cooden
+                            Text(
+                              "Es befindet sich zur Zeit findet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenknichtfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenks im Warenkorb",
+                              style: Theme.of(context).textTheme.bodyLarge,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
