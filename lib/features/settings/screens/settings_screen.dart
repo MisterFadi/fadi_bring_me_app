@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/database/firebase/firebase_auth_repo.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -27,8 +28,7 @@ class SettingsScreen extends StatelessWidget {
                   Text("Fadi Bdiwi",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headlineMedium),
-                  Text("email1234@gmail.com",
-                      textAlign: TextAlign.center,
+                  Text(FirebaseAuthRepo().currentUser!.email!.toString(),
                       style: Theme.of(context).textTheme.bodyMedium),
                   const SizedBox(height: 40),
                   Container(
