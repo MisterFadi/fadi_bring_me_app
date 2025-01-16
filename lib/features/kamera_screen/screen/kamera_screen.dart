@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class KameraScreen extends StatefulWidget {
   const KameraScreen({
@@ -14,6 +15,8 @@ class KameraScreen extends StatefulWidget {
 }
 
 class _KameraScreenState extends State<KameraScreen> {
+  final prefs = SharedPreferences.getInstance();
+
   File? _selectedImage;
 /*
   @override
@@ -64,6 +67,13 @@ class _KameraScreenState extends State<KameraScreen> {
     );
   }
 */
+
+  @override
+  void initState() {
+    _selectedImage = null;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,7 +112,7 @@ class _KameraScreenState extends State<KameraScreen> {
                 _selectedImage != null
                     ? Image.file(
                         _selectedImage!,
-                        scale: 0.5,
+                        scale: 0.2,
                       )
                     : const Text("Bitte ein Bild hinzufügen")
               ],
