@@ -4,8 +4,29 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthRepo implements AuthRepo {
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
+  final FirebaseAuth firebaseAuth;
+
+  FirebaseAuthRepo({FirebaseAuth? firebaseAuth})
+      : firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
+
+  @override
+  Future<AppUser?> signInWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      final credential = await firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+      final user = credential.user;
+      if (user == null) return null;
+      return AppUser(userId: user.uid, email: user.email);
+    } on FirebaseAuthException catch (e) {
+      throw Exception(
+          "Login fehlgeschlagen: ${e.message ?? 'Unbekannter Fehler'}");
+    }
+  }
+
+  @override
+  Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
 
   @override
   Future<dynamic> signInWithGoogle() async {
@@ -27,19 +48,6 @@ class FirebaseAuthRepo implements AuthRepo {
     }
     return;
   }
-
-  @override
-  Future<AppUser?> signInWithEmailAndPassword(
-      String email, String password) async {
-    final credential = await firebaseAuth.signInWithEmailAndPassword(
-        email: email, password: password);
-    final user = credential.user;
-    if (user == null) return null;
-    return AppUser(userId: user.uid, email: user.email);
-  }
-
-  @override
-  Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
 
   @override
   Future<AppUser?> createUserWithEmailAndPassword(
