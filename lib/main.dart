@@ -27,12 +27,9 @@ void main() async {
 // final repository = MockDatabase();
 // runApp(MainApp(repository: repository));
 // }
-
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
   // final DatabaseRepository repository = MockDatabase();
-
   @override
   Widget build(BuildContext context) {
     final authRepo = Provider.of<AuthRepo>(context, listen: false);
@@ -42,19 +39,31 @@ class MainApp extends StatelessWidget {
           final isLoggedIn = snapshot.data?.uid != null;
 
           return MaterialApp(
-              key: ValueKey(isLoggedIn),
-              theme: myTheme,
-              debugShowCheckedModeBanner: false,
+            key: ValueKey(isLoggedIn),
+            theme: myTheme,
+            debugShowCheckedModeBanner: false,
 
-              // initialRoute: "/",
-              // routes: {
-              //   "/": (context) => const SplashScreen(),
-              //   "/home": (context) => const Scaffold(
-              //         body: HomeScreen(),
-              //       ),
-              // },
-              home:
-                  isLoggedIn ? const BottomNavBarWidget() : const HomeScreen());
+            // initialRoute: "/",
+            // routes: {
+            //   "/": (context) => const SplashScreen(),
+            //   "/home": (context) => const Scaffold(
+            //         body: HomeScreen(),
+            //       ),
+            // },
+            onGenerateRoute: (settings) {
+              if (settings.name == '/bottomnavigationbarmain') {
+                return MaterialPageRoute(
+                    builder: (context) => const BottomNavBarWidget());
+              }
+
+              return MaterialPageRoute(
+                  builder: (context) => isLoggedIn
+                      ? const BottomNavBarWidget()
+                      : const HomeScreen());
+            },
+
+            home: isLoggedIn ? const BottomNavBarWidget() : const HomeScreen(),
+          );
         });
   }
 }

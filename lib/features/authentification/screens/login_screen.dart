@@ -24,6 +24,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
@@ -78,16 +85,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         showPassword ? Icons.visibility_off : Icons.visibility,
                         color: Colors.black),
                     onPressed: () {
-                      setState(
-                        () {
-                          showPassword = !showPassword; // Sichtbarkeeit
-                        },
-                      );
+                      setState(() {
+                        showPassword = !showPassword;
+                      });
                     },
                   ),
-
-                  // labelText: "Passwort",
-                  // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
                   hintText: "Passwort",
                   hintStyle: const TextStyle(fontSize: 15, color: Colors.grey),
                   filled: true,
@@ -102,9 +104,11 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               children: [
                 const SizedBox(width: 27),
-                const AnmeldeButton(
+                AnmeldeButton(
                   contHeight: 50,
                   contWidth: 150,
+                  emailController: emailController,
+                  passwordController: passwordController,
                 ),
                 const Expanded(child: SizedBox()),
                 GestureDetector(
@@ -117,9 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
-                const SizedBox(
-                  width: 30,
-                ),
+                const SizedBox(width: 30),
               ],
             ),
             const SizedBox(height: 15),
@@ -148,8 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontWeight: FontWeight.bold)),
                   ],
                 ),
-              ),
-              // child: Text(
+              ), // child: Text(
               //   "Noch kein Account? Hier Registrieren",
               //   style: Theme.of(context).textTheme.bodyMedium,
               //   textAlign: TextAlign.right,
@@ -161,11 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
               width: 300,
               borderRadius: 15,
               buttonType: SocialLoginButtonType.appleBlack,
-              onPressed: () {
-                _launchUrlA();
-                //print("Apple");
-              },
-              //text: "Anmelden mit Apple",
+              onPressed: _launchUrlA,
             ),
             const SizedBox(height: 10),
             /*
@@ -182,16 +179,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             */
             SocialLoginButton(
-                width: 300,
-                borderRadius: 15,
-                buttonType: SocialLoginButtonType.google,
-                onPressed: () {
-                  context.read<AuthRepo>().signInWithGoogle();
-                }
-                // _launchUrlG();
-                //print("Google");
-                //text: "Anmelden mit Google",
-                ),
+              width: 300,
+              borderRadius: 15,
+              buttonType: SocialLoginButtonType.google,
+              onPressed: () {
+                context.read<AuthRepo>().signInWithGoogle();
+              }, // _launchUrlG();
+              //print("Google");
+              //text: "Anmelden mit Google",
+            ),
             const Spacer(),
             const RichtlinienWidget(),
           ],
@@ -216,4 +212,3 @@ Future<void> _launchUrlA() async {
 //   if (!await launchUrl(urlg)) {
 //     throw Exception("Seite konnte nicht geladen werden $urlg");
 //   }
-
