@@ -15,6 +15,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool showPassword = true;
   bool showNewPassword = true;
 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,9 +161,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               const SizedBox(height: 40),
-              const AnmeldeButton(
+              AnmeldeButton(
                 contHeight: 60,
                 contWidth: 330,
+                emailController: emailController,
+                passwordController: passwordController,
               ),
               const Spacer(),
               const RichtlinienWidget(),
