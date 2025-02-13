@@ -25,7 +25,7 @@ class SettingsScreen extends StatelessWidget {
                     backgroundImage: AssetImage("assets/images/Fadi_Emoji.jpg"),
                   ),
                   const SizedBox(height: 20),
-                  Text("Fadi Bdiwi",
+                  Text("Fadi",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headlineMedium),
                   Text(FirebaseAuthRepo().currentUser!.email!.toString(),
