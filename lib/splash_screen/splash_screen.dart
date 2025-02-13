@@ -1,3 +1,5 @@
+import 'package:fadi_bring_me_app/features/home_screen/screen/home_screen.dart';
+import 'package:fadi_bring_me_app/shared/slide_from_bottom_page_route.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,9 +14,14 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 1), () {
+    Future.delayed(const Duration(milliseconds: 5550), () {
       if (mounted) {
-        Navigator.pushReplacementNamed(context, "/home");
+        Navigator.pushReplacement(
+          context,
+          SlideFromBottomPageRoute(
+            page: const HomeScreen(),
+          ),
+        );
       }
     });
   }
