@@ -1,3 +1,5 @@
+import 'dart:developer' as dev;
+
 import 'package:carousel_images/carousel_images.dart';
 import 'package:flutter/material.dart';
 
@@ -67,7 +69,7 @@ class HomeScreenCarousel extends StatelessWidget {
                   cachedNetworkImage: true,
                   verticalAlignment: Alignment.bottomCenter,
                   onTap: (index) {
-                    print('Tapped on page $index');
+                    dev.log('Tapped on page $index');
                   },
                 )
               ],

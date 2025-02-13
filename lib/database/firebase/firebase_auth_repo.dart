@@ -1,3 +1,5 @@
+import 'dart:developer' as dev;
+
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:fadi_bring_me_app/shared/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,9 +41,9 @@ class FirebaseAuthRepo implements AuthRepo {
         idToken: googleAuth?.idToken,
       );
       await firebaseAuth.signInWithCredential(credential);
-      print("Logged In Google");
+      dev.log("Logged In Google");
     } on Exception catch (e) {
-      print('exception->$e');
+      dev.log('exception->$e');
     } catch (e, s) {
       print(e);
       print(s);
@@ -52,11 +54,17 @@ class FirebaseAuthRepo implements AuthRepo {
   @override
   Future<AppUser?> createUserWithEmailAndPassword(
       String email, String password) async {
-    final credential = await firebaseAuth.createUserWithEmailAndPassword(
-        email: email, password: password);
-    final user = credential.user;
-    if (user == null) return null;
-    return AppUser(userId: user.uid, email: user.email);
+    try {
+      final credential = await firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      final user = credential.user;
+      if (user == null) return null;
+      return AppUser(userId: user.uid, email: user.email);
+    } catch (e) {
+      throw Exception("Failed to create user: $e");
+    }
   }
 
   @override
@@ -68,7 +76,7 @@ class FirebaseAuthRepo implements AuthRepo {
 
   @override
   Future<void> signOut() async {
-    print("Du bist abgemeldet");
+    dev.log("Du bist abgemeldet");
     await googleSignIn.signOut();
     await firebaseAuth.signOut();
   }
