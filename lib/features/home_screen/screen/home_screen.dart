@@ -1,3 +1,74 @@
+/*
+import 'package:fadi_bring_me_app/features/profil_screen/screen/profil_sreen.dart';
+import 'package:flutter/material.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({
+    super.key,
+  });
+
+
+  // New HomeScreen
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        alignment: Alignment.center,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/tafel.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child:
+            Text("BringMe", style: Theme.of(context).textTheme.headlineLarge),
+      ),
+    );
+  }
+}
+
+class SignIn extends StatelessWidget {
+  const SignIn({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ProfilScreen()));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(255, 248, 150, 183),
+                blurRadius: 10,
+                offset: Offset(1, 4), // Shadow position
+              ),
+            ],
+            borderRadius: BorderRadius.circular(9),
+            gradient: const LinearGradient(colors: [
+              Color.fromARGB(255, 243, 111, 219),
+              Color.fromARGB(218, 200, 168, 117)
+            ], begin: Alignment.centerLeft, end: Alignment.centerRight)),
+        child: const Padding(
+          padding: EdgeInsets.fromLTRB(56, 12, 56, 12),
+          child: Text("Order Now",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold)),
+        ),
+      ),
+    );
+  }
+}
+
+*/
+
+// Original page
 import 'dart:io';
 
 import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
@@ -19,8 +90,8 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            //mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 5),
               ClipRRect(
@@ -91,7 +162,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 2,
+                height: 5,
               ),
             ],
           ),
