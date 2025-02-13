@@ -1,7 +1,7 @@
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
-import 'package:fadi_bring_me_app/features/authentification/screens/sign_up_screen.dart';
+import 'package:fadi_bring_me_app/features/authentification/screens/sign_in_screen.dart';
 import 'package:fadi_bring_me_app/features/authentification/widgets/oder_devider_widget.dart';
-import 'package:fadi_bring_me_app/shared/anmelde_button.dart';
+import 'package:fadi_bring_me_app/shared/login_button.dart';
 import 'package:fadi_bring_me_app/shared/richtlinien_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -60,8 +60,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   prefixIcon: const Icon(Icons.email),
                   // labelText: "Email",
                   // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
-                  hintText: "Email oder Telefonnummer",
-                  hintStyle: const TextStyle(fontSize: 12, color: Colors.grey),
+                  hintText: "Email",
+                  hintStyle: const TextStyle(fontSize: 15, color: Colors.grey),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -104,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               children: [
                 const SizedBox(width: 27),
-                AnmeldeButton(
+                LoginButton(
                   contHeight: 50,
                   contWidth: 150,
                   emailController: emailController,
@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const SignUpScreen()));
+                        builder: (context) => const SignInScreen()));
               },
               child: RichText(
                 text: TextSpan(
@@ -158,12 +158,12 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             //const SizedBox(height: 6),
             const Expanded(child: SizedBox()),
-            SocialLoginButton(
-              width: 300,
-              borderRadius: 15,
-              buttonType: SocialLoginButtonType.appleBlack,
-              onPressed: _launchUrlA,
-            ),
+            // SocialLoginButton(
+            //   width: 300,
+            //   borderRadius: 15,
+            //   buttonType: SocialLoginButtonType.appleBlack,
+            //   onPressed: _launchUrlA,
+            // ),
             const SizedBox(height: 10),
             /*
             TextButton(
