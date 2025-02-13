@@ -23,7 +23,7 @@ class TaskCounterCard extends StatelessWidget {
           const SizedBox(width: 16),
           const Expanded(
             child: Text(
-              "Keine Liste vorhanden",
+              "Kein Ordner vorhanden",
               style: TextStyle(
                 fontSize: 18,
               ),
