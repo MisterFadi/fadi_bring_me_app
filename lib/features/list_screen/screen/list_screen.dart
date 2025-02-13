@@ -1,5 +1,5 @@
+import 'package:fadi_bring_me_app/features/list_screen/screen/product_screen.dart';
 import 'package:fadi_bring_me_app/features/search_list.dart';
-import 'package:fadi_bring_me_app/features/settings/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class ListScreen extends StatefulWidget {
@@ -16,25 +16,42 @@ class _ListScreenState extends State<ListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "BringMe",
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SettingsScreen()));
-            },
-            icon: const Icon(
-              Icons.settings,
-              color: Colors.black,
-              size: 30,
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            const SizedBox(width: 0),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProductScreen()));
+              },
+              child: const Text(
+                "Schließen",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
             ),
-          ),
-        ],
+            const Spacer(),
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (context) => const ProductScreen()));
+            //   },
+            //   child: const Text(
+            //     "Bearbeiten",
+            //     style: TextStyle(color: Colors.white, fontSize: 20),
+            //   ),
+            // ),
+            const Text(
+              "Bearbeiten",
+              style: TextStyle(color: Colors.white, fontSize: 10),
+            ),
+            const SizedBox(width: 0),
+          ],
+        ),
       ),
       body: SafeArea(
         child: Center(
