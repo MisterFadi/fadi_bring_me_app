@@ -1,4 +1,3 @@
-/*
 import 'package:fadi_bring_me_app/features/profil_screen/screen/profil_sreen.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +5,6 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
   });
-
 
   // New HomeScreen
   @override
@@ -66,8 +64,8 @@ class SignIn extends StatelessWidget {
   }
 }
 
-*/
 
+/*
 // Original page
 import 'dart:io';
 
@@ -171,3 +169,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+*/
