@@ -66,7 +66,7 @@ class CardScreen extends StatelessWidget {
                               child: SizedBox(),
                             ), //!---------- Nicht hart cooden
                             Text(
-                              "Es befindet sich zur Zeit findet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenknichtfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenkfindet sich zur Zeit nichts im Warenks im Warenkorb",
+                              "Es befindet sich zur Zeit nichts im Warenkorb",
                               style: Theme.of(context).textTheme.bodyLarge,
                               textAlign: TextAlign.center,
                             ),
