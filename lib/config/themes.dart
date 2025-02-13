@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData myTheme = ThemeData(
@@ -15,18 +16,25 @@ ThemeData myTheme = ThemeData(
     displaySmall: TextStyle(
         fontSize: 10, color: Colors.black, fontWeight: FontWeight.normal),
   ),
-  appBarTheme: const AppBarTheme(
-    color: Colors.green, // Background color for the AppBar in light mode
-    titleTextStyle: TextStyle(
+  appBarTheme: AppBarTheme(
+    color: appColor, // Background color for the AppBar in light mode
+    titleTextStyle: const TextStyle(
       color: Colors.grey, // AppBar title text color for light mode
       fontSize: 20,
       fontWeight: FontWeight.bold,
     ),
-    iconTheme: IconThemeData(color: Colors.black), // Icon color
+    iconTheme: const IconThemeData(color: Colors.black), // Icon color
   ),
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-  scaffoldBackgroundColor: Colors.green,
-  navigationBarTheme:
-      const NavigationBarThemeData(backgroundColor: Colors.green),
+  scaffoldBackgroundColor: appColor,
+  navigationBarTheme: NavigationBarThemeData(
+      elevation: 0,
+      backgroundColor: appColor,
+      labelTextStyle: const WidgetStatePropertyAll<TextStyle>(
+          TextStyle(color: Colors.white)),
+      surfaceTintColor: Colors.deepOrangeAccent,
+      indicatorColor: appColor,
+      overlayColor: WidgetStateProperty.all(appColor)),
+  // colorScheme:
+  //     ColorScheme.fromSeed(seedColor: Colors.blue).copyWith(surface: appColor),
   fontFamily: "SFProDisplay",
 );
