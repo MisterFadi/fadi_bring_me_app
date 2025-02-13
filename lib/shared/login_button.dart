@@ -1,11 +1,12 @@
 import 'dart:developer';
 
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AnmeldeButton extends StatefulWidget {
-  const AnmeldeButton({
+class LoginButton extends StatefulWidget {
+  const LoginButton({
     super.key,
     required this.contHeight,
     required this.contWidth,
@@ -19,10 +20,10 @@ class AnmeldeButton extends StatefulWidget {
   final TextEditingController passwordController;
 
   @override
-  State<AnmeldeButton> createState() => _AnmeldeButtonState();
+  State<LoginButton> createState() => _LoginButtonState();
 }
 
-class _AnmeldeButtonState extends State<AnmeldeButton> {
+class _LoginButtonState extends State<LoginButton> {
   Future<void> login() async {
     final authRepo = Provider.of<AuthRepo>(context, listen: false);
     final email = widget.emailController.text.trim();
@@ -56,9 +57,9 @@ class _AnmeldeButtonState extends State<AnmeldeButton> {
         width: widget.contWidth,
         decoration: BoxDecoration(
           border: Border.all(width: 0.5),
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
-              color: Color.fromARGB(255, 242, 232, 207),
+              color: appColorLogo,
             ),
           ],
           borderRadius: BorderRadius.circular(9),
