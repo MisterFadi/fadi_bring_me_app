@@ -7,6 +7,7 @@ environment:
   sdk: ^3.5.2
 
 dependencies:
+  animated_text_kit: ^4.2.3
   app_settings: ^5.2.0
   carousel_images: ^1.1.2
   dropdown_textfield: ^1.2.0
@@ -24,12 +25,14 @@ dependencies:
   overlapped_carousel: ^1.0.2
   provider: ^6.1.2
   shared_preferences: ^2.3.2
+  slide_to_act: ^2.0.2
   social_login_buttons: ^1.0.7
   social_media_buttons: ^1.0.0
   timer_snackbar: ^0.0.3
   url_launcher: ^6.3.1
   vertical_card_pager: ^1.6.2
   webview_flutter: ^4.10.0
+  
 
 dev_dependencies:
   flutter_lints: ^4.0.0
