@@ -1,68 +1,141 @@
-import 'package:fadi_bring_me_app/features/profil_screen/screen/profil_sreen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:fadi_bring_me_app/config/colors.dart';
+import 'package:fadi_bring_me_app/features/authentification/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({
     super.key,
   });
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   // New HomeScreen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        alignment: Alignment.center,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/tafel.jpg"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child:
-            Text("BringMe", style: Theme.of(context).textTheme.headlineLarge),
-      ),
-    );
-  }
-}
-
-class SignIn extends StatelessWidget {
-  const SignIn({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const ProfilScreen()));
-      },
-      child: Container(
-        decoration: BoxDecoration(
-            boxShadow: const [
-              BoxShadow(
-                color: Color.fromARGB(255, 248, 150, 183),
-                blurRadius: 10,
-                offset: Offset(1, 4), // Shadow position
+      backgroundColor: appColorLogo,
+      body: SafeArea(
+        child: Center(
+          child: Stack(
+            clipBehavior: Clip.none,
+            // alignment: Alignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  "assets/images/ShoppingListeImage_2 Kopie.jpeg",
+                  fit: BoxFit.fill,
+                  width: 300,
+                  height: 620,
+                ),
+              ),
+              Positioned(
+                left: 60,
+                top: 195,
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    TyperAnimatedText("Apfel"),
+                    TyperAnimatedText("Birne"),
+                    TyperAnimatedText("Karotte"),
+                    TyperAnimatedText("Orange"),
+                    TyperAnimatedText("Zitrone"),
+                  ],
+                  repeatForever: true,
+                ),
+              ),
+              Positioned(
+                left: 60,
+                top: 230,
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    TyperAnimatedText("HimbeerKuchen"),
+                    TyperAnimatedText("Tiramisu"),
+                    TyperAnimatedText("Kaiserschmarn"),
+                    TyperAnimatedText("VanilleEis"),
+                    TyperAnimatedText("Schokoladen-Mousse"),
+                  ],
+                  repeatForever: true,
+                ),
+              ),
+              Positioned(
+                left: 60,
+                top: 265,
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    TyperAnimatedText("Wasser"),
+                    TyperAnimatedText("Sprite"),
+                    TyperAnimatedText("Mexo-Mix"),
+                    TyperAnimatedText("Vitaminsaft"),
+                    TyperAnimatedText("Schokoladen-Mousse"),
+                  ],
+                  repeatForever: true,
+                ),
+              ),
+              Positioned(
+                left: 30,
+                top: 510,
+                width: 230,
+                height: 60,
+                child: GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet(
+                        useSafeArea: true,
+                        context: context,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(30)),
+                        ),
+                        isScrollControlled: true,
+                        builder: (context) => const LoginScreen());
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: appColor,
+                    ),
+                    child: Center(
+                      child: AnimatedTextKit(
+                        pause: const Duration(seconds: 5),
+                        animatedTexts: [
+                          TypewriterAnimatedText(
+                            "Einkauf starten",
+                            textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                        ],
+                        repeatForever: true,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: -40,
+                left: 50,
+                child: Transform.scale(
+                  scale: 1.3,
+                  child: Image.asset(
+                    "assets/gif/SplashScreen 2.gif",
+                    width: 200,
+                    height: 200,
+                  ),
+                ),
               ),
             ],
-            borderRadius: BorderRadius.circular(9),
-            gradient: const LinearGradient(colors: [
-              Color.fromARGB(255, 243, 111, 219),
-              Color.fromARGB(218, 200, 168, 117)
-            ], begin: Alignment.centerLeft, end: Alignment.centerRight)),
-        child: const Padding(
-          padding: EdgeInsets.fromLTRB(56, 12, 56, 12),
-          child: Text("Order Now",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold)),
+          ),
         ),
       ),
     );
   }
 }
+
 
 
 /*
