@@ -25,7 +25,7 @@ ThemeData myTheme = ThemeData(
     ),
     iconTheme: const IconThemeData(color: Colors.black), // Icon color
   ),
-  scaffoldBackgroundColor: appColor,
+  scaffoldBackgroundColor: appColorLogo,
   navigationBarTheme: NavigationBarThemeData(
       elevation: 0,
       backgroundColor: appColor,
