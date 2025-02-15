@@ -3,17 +3,33 @@ import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/features/authentification/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
   });
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   // New HomeScreen
+
+  /*
+  void _showModalBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      useSafeArea: true,
+      isScrollControlled: true,
+      builder: (context) => DraggableScrollableSheet(
+        initialChildSize: 0.4,
+        maxChildSize: 0.5,
+        minChildSize: 0.32,
+        expand: true,
+        builder: (context, scrollController) => SingleChildScrollView(
+          controller: scrollController,
+          child: const LoginScreen(),
+        ),
+      ),
+    );
+  }
+  */
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,38 +97,36 @@ class _HomeScreenState extends State<HomeScreen> {
                 top: 510,
                 width: 230,
                 height: 60,
-                child: GestureDetector(
-                  onTap: () {
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          WidgetStateProperty.all<Color>(appColor)),
+                  onPressed: () {
                     showModalBottomSheet(
-                        useSafeArea: true,
-                        context: context,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(30)),
-                        ),
-                        isScrollControlled: true,
-                        builder: (context) => const LoginScreen());
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: appColor,
-                    ),
-                    child: Center(
-                      child: AnimatedTextKit(
-                        pause: const Duration(seconds: 5),
-                        animatedTexts: [
-                          TypewriterAnimatedText(
-                            "Einkauf starten",
-                            textStyle: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
-                          ),
-                        ],
-                        repeatForever: true,
+                      useSafeArea: true,
+                      isScrollControlled: true,
+                      context: context,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(10)),
                       ),
-                    ),
+                      builder: (BuildContext context) {
+                        return const LoginScreen();
+                      },
+                    );
+                  },
+                  child: AnimatedTextKit(
+                    pause: const Duration(seconds: 5),
+                    animatedTexts: [
+                      TypewriterAnimatedText(
+                        "Einkauf starten",
+                        textStyle: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                    ],
+                    repeatForever: true,
                   ),
                 ),
               ),
@@ -135,8 +149,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-
 
 /*
 // Original page

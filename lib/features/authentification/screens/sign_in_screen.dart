@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:fadi_bring_me_app/features/home_screen/screen/home_screen.dart';
 import 'package:fadi_bring_me_app/shared/richtlinien_widget.dart';
@@ -33,191 +34,175 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(14),
-                child: Image.asset(
-                  "assets/logo/BringMe_Logo.png",
-                  fit: BoxFit.cover,
-                  width: 150,
-                  height: 150,
-                ),
-              ),
-              const SizedBox(height: 50),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                child: TextFormField(
-                  controller: emailController,
-                  style: const TextStyle(color: Colors.black54),
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.email),
-                    // labelText: "Email",
-                    // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
-                    hintText: "Email",
-                    hintStyle:
-                        const TextStyle(fontSize: 15, color: Colors.grey),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 30),
+            Text(
+              textAlign: TextAlign.left,
+              "Willkomen auf BringMe",
+              style: TextStyle(
+                  fontSize: 25, fontWeight: FontWeight.bold, color: appColor),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+              child: TextFormField(
+                controller: emailController,
+                style: const TextStyle(color: Colors.black54),
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.email),
+                  // labelText: "Email",
+                  // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
+                  hintText: "Email",
+                  hintStyle: const TextStyle(fontSize: 15, color: Colors.grey),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                child: TextFormField(
-                  controller: repeatEmailController,
-                  style: const TextStyle(color: Colors.black54),
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.email),
-                    // labelText: "Email",
-                    // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
-                    hintText: "Email wiederholen",
-                    hintStyle:
-                        const TextStyle(fontSize: 15, color: Colors.grey),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+              child: TextFormField(
+                controller: repeatEmailController,
+                style: const TextStyle(color: Colors.black54),
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.email),
+                  // labelText: "Email",
+                  // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
+                  hintText: "Email wiederholen",
+                  hintStyle: const TextStyle(fontSize: 15, color: Colors.grey),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                child: TextFormField(
-                  controller: passwordController,
-                  obscureText: showPassword,
-                  style: const TextStyle(color: Colors.black54),
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                          showPassword
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: Colors.black),
-                      onPressed: () {
-                        setState(
-                          () {
-                            showPassword = !showPassword; // Sichtbarkeeit
-                          },
-                        );
-                      },
-                    ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+              child: TextFormField(
+                controller: passwordController,
+                obscureText: showPassword,
+                style: const TextStyle(color: Colors.black54),
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                        showPassword ? Icons.visibility_off : Icons.visibility,
+                        color: Colors.black),
+                    onPressed: () {
+                      setState(
+                        () {
+                          showPassword = !showPassword; // Sichtbarkeeit
+                        },
+                      );
+                    },
+                  ),
 
-                    prefixIcon: const Icon(Icons.lock),
-                    // labelText: "Passwort",
-                    // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
-                    hintText: "Passwort",
-                    hintStyle:
-                        const TextStyle(fontSize: 15, color: Colors.grey),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
+                  prefixIcon: const Icon(Icons.lock),
+                  // labelText: "Passwort",
+                  // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
+                  hintText: "Passwort",
+                  hintStyle: const TextStyle(fontSize: 15, color: Colors.grey),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                child: TextFormField(
-                  controller: repeatPasswordController,
-                  obscureText: showNewPassword,
-                  style: const TextStyle(color: Colors.black54),
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                          showNewPassword
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: Colors.black),
-                      onPressed: () {
-                        setState(
-                          () {
-                            showNewPassword = !showNewPassword; // Sichtbarkeeit
-                          },
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+              child: TextFormField(
+                controller: repeatPasswordController,
+                obscureText: showNewPassword,
+                style: const TextStyle(color: Colors.black),
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                        showNewPassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: Colors.black),
+                    onPressed: () {
+                      setState(
+                        () {
+                          showNewPassword = !showNewPassword; // Sichtbarkeeit
+                        },
+                      );
+                    },
+                  ),
+                  prefixIcon: const Icon(Icons.lock),
+                  // labelText: "Passwort",
+                  // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
+                  hintText: "Passwort wiederholen",
+                  hintStyle: const TextStyle(fontSize: 15, color: Colors.grey),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            SignInButton(
+              onPressed: () async {
+                if (passwordController.text == repeatPasswordController.text) {
+                  try {
+                    await context
+                        .read<AuthRepo>()
+                        .createUserWithEmailAndPassword(
+                          emailController.text,
+                          passwordController.text,
                         );
-                      },
-                    ),
-                    prefixIcon: const Icon(Icons.lock),
-                    // labelText: "Passwort",
-                    // labelStyle: const TextStyle(fontSize: 15, color: Colors.blueGrey),
-                    hintText: "Passwort wiederholen",
-                    hintStyle:
-                        const TextStyle(fontSize: 15, color: Colors.grey),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 30),
-              SignInButton(
-                text: "Sign Up!",
-                onPressed: () async {
-                  if (passwordController.text ==
-                      repeatPasswordController.text) {
-                    try {
-                      await context
-                          .read<AuthRepo>()
-                          .createUserWithEmailAndPassword(
-                            emailController.text,
-                            passwordController.text,
-                          );
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()),
-                      );
-                    } catch (e) {
-                      print(e);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                            content:
-                                Text("Registration failed: ${e.toString()}")),
-                      );
-                    }
-                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                    );
+                  } catch (e) {
+                    print(e);
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Passwords do not match")),
+                      SnackBar(
+                          content:
+                              Text("Registration failed: ${e.toString()}")),
                     );
                   }
-                },
-                contHeight: 60,
-                contWidth: 335,
-                emailController: emailController,
-                passwordController: passwordController,
-              ),
-              const SizedBox(height: 40),
-              const Spacer(),
-              const RichtlinienWidget(),
-            ],
-          ),
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Passwords do not match")),
+                  );
+                }
+              },
+              contHeight: 50,
+              contWidth: 330,
+              emailController: emailController,
+              passwordController: passwordController,
+            ),
+            const SizedBox(height: 40),
+            const RichtlinienWidget(),
+          ],
         ),
       ),
     );

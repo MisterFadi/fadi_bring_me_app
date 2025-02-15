@@ -7,6 +7,22 @@ class OderDeviderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return const Row(
+      children: [
+        SizedBox(width: 30),
+        Expanded(
+          child: Divider(
+            thickness: 1,
+            color: Colors.blueGrey,
+          ),
+        ),
+        SizedBox(width: 30),
+      ],
+    );
+  }
+  /*
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
         const SizedBox(width: 30),
@@ -29,4 +45,5 @@ class OderDeviderWidget extends StatelessWidget {
       ],
     );
   }
+*/
 }

@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:fadi_bring_me_app/features/authentification/screens/sign_in_screen.dart';
 import 'package:fadi_bring_me_app/features/authentification/widgets/oder_devider_widget.dart';
@@ -31,95 +32,99 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 40),
-              const Text(
-                textAlign: TextAlign.left,
-                "Willkomen auf BringMe",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.white),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onLongPress: () {
-                      _launchUrlA();
-                    },
-                    onTap: () {
-                      context.read<AuthRepo>().signInWithGoogle();
-                    },
-                    child: Container(
-                      height: 130,
-                      width: 130,
-                      color: Colors.white,
-                      child: const Image(
-                          image: AssetImage("assets/images/Google_logo.png")),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  GestureDetector(
-                    onLongPress: () {
-                      _launchUrlG();
-                    },
-                    onTap: () {
-                      context.read<AuthRepo>().signInWithGoogle();
-                    },
-                    child: Container(
-                      height: 100,
-                      width: 100,
-                      color: Colors.white,
-                      child: const Image(
-                          image: AssetImage("assets/images/Apple_logo.png")),
-                    ),
-                  ),
-                ],
-              ),
-
-              const OderDeviderWidget(),
-              const SizedBox(height: 15),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SignInScreen()));
-                },
-                child: RichText(
-                  text: TextSpan(
-                    style: Theme.of(context).textTheme.displaySmall,
-                    children: const <TextSpan>[
-                      TextSpan(
-                        text: "Noch kein Account? ",
-                        style: TextStyle(color: Colors.black, fontSize: 15),
-                      ),
-                      TextSpan(
-                          text: "Hier Registrieren",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold)),
-                    ],
-                  ),
+      body: SingleChildScrollView(
+        child: Stack(
+          alignment: AlignmentDirectional.topCenter,
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              top: -15,
+              child: Container(
+                width: 60,
+                height: 7,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              //const SizedBox(height: 6),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 30),
+                Text(
+                  textAlign: TextAlign.left,
+                  "Willkomen auf BringMe",
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: appColor),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
 
-              const SizedBox(height: 10),
-              /*
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onLongPress: () {
+                        _launchUrlG();
+                      },
+                      onTap: () {
+                        context.read<AuthRepo>().signInWithGoogle();
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          height: 65,
+                          width: 65,
+                          color: Colors.white,
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Image(
+                                image: AssetImage(
+                                    "assets/images/Google_logo.png")),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    GestureDetector(
+                      onLongPress: () {
+                        _launchUrlA();
+                      },
+                      onTap: () {
+                        context.read<AuthRepo>().signInWithGoogle();
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          height: 65,
+                          width: 65,
+                          color: Colors.white,
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Image(
+                                image:
+                                    AssetImage("assets/images/Apple_logo.png")),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                const OderDeviderWidget(),
+                const SizedBox(height: 15),
+
+                //const SizedBox(height: 6),
+
+                const SizedBox(height: 10),
+                /*
               TextButton(
                 onPressed: () {
                   context.read<AuthRepo>().signInWithGoogle();
@@ -133,111 +138,126 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               */
 
-              // SocialLoginButton(
-              //   width: 300,
-              //   borderRadius: 15,
-              //   buttonType: SocialLoginButtonType.google,
-              //   onPressed: () {
-              //     context.read<AuthRepo>().signInWithGoogle();
-              //   }, // _launchUrlG();
-              // ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
-                child: TextFormField(
-                  controller: emailController,
-                  style: const TextStyle(color: Colors.black54),
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.email),
-                    // labelText: "Email",
-                    // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
-                    hintText: "Email",
-                    hintStyle:
-                        const TextStyle(fontSize: 15, color: Colors.grey),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
-                child: TextFormField(
-                  controller: passwordController,
-                  obscureText: showPassword,
-                  style: const TextStyle(color: Colors.black54),
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.lock),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                          showPassword
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: Colors.black),
-                      onPressed: () {
-                        setState(() {
-                          showPassword = !showPassword;
-                        });
-                      },
-                    ),
-                    hintText: "Passwort",
-                    hintStyle:
-                        const TextStyle(fontSize: 15, color: Colors.grey),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 50),
-
-              LoginButton(
-                contHeight: 50,
-                contWidth: 150,
-                emailController: emailController,
-                passwordController: passwordController,
-              ),
-              const Expanded(child: SizedBox()),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SignInScreen()));
-                },
-                child: RichText(
-                  text: TextSpan(
-                    style: Theme.of(context).textTheme.displaySmall,
-                    children: const <TextSpan>[
-                      TextSpan(
-                        text: "Noch kein Account? ",
-                        style: TextStyle(color: Colors.black, fontSize: 15),
+                // SocialLoginButton(
+                //   width: 300,
+                //   borderRadius: 15,
+                //   buttonType: SocialLoginButtonType.google,
+                //   onPressed: () {
+                //     context.read<AuthRepo>().signInWithGoogle();
+                //   }, // _launchUrlG();
+                // ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
+                  child: TextFormField(
+                    controller: emailController,
+                    style: const TextStyle(color: Colors.black),
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.email),
+                      // iconColor: Colors.red,
+                      // labelText: "Email",
+                      // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
+                      hintText: "Email",
+                      hintStyle:
+                          const TextStyle(fontSize: 18, color: Colors.grey),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      TextSpan(
-                          text: "Hier Registrieren",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold)),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-
-              const SizedBox(height: 30),
-              //const Spacer(),
-              //const RichtlinienWidget(),
-            ],
-          ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
+                  child: TextFormField(
+                    controller: passwordController,
+                    obscureText: showPassword,
+                    style: const TextStyle(color: Colors.black),
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.lock),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                            showPassword
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: Colors.black),
+                        onPressed: () {
+                          setState(() {
+                            showPassword = !showPassword;
+                          });
+                        },
+                      ),
+                      hintText: "Passwort",
+                      hintStyle:
+                          const TextStyle(fontSize: 18, color: Colors.grey),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 7),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "Passwort vergessen?",
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal),
+                    ),
+                    SizedBox(width: 35),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                LoginButton(
+                  contHeight: 50,
+                  contWidth: 330,
+                  emailController: emailController,
+                  passwordController: passwordController,
+                ),
+                // const (child: SizedBox()),
+                const SizedBox(height: 30),
+                //const Spacer(),
+                //const RichtlinienWidget(),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignInScreen()));
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                      style: Theme.of(context).textTheme.displaySmall,
+                      children: <TextSpan>[
+                        const TextSpan(
+                          text: "Noch kein Account? ",
+                          style: TextStyle(color: Colors.black, fontSize: 13),
+                        ),
+                        TextSpan(
+                            text: "Hier Registrieren",
+                            style: TextStyle(
+                                color: appColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

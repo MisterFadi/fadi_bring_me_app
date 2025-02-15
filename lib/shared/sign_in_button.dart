@@ -12,7 +12,6 @@ class SignInButton extends StatefulWidget {
     required this.contWidth,
     required this.emailController,
     required this.passwordController,
-    required String text,
     required this.onPressed,
   });
 
@@ -55,19 +54,19 @@ class _SignInButtonState extends State<SignInButton> {
         height: widget.contHeight,
         width: widget.contWidth,
         decoration: BoxDecoration(
-          border: Border.all(width: 0.5),
+          border: Border.all(width: 0),
           boxShadow: [
             BoxShadow(
-              color: appColorLogo,
+              color: appColor,
             ),
           ],
-          borderRadius: BorderRadius.circular(9),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: const Center(
           child: Text("Registrieren",
               style: TextStyle(
-                  color: Colors.green,
-                  fontSize: 18,
+                  color: Colors.white,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold)),
         ),
       ),
