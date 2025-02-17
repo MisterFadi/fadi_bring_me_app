@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/features/settings/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
@@ -84,6 +85,7 @@ class CardScreen extends StatelessWidget {
           ),
         ),
       ),
+      backgroundColor: backgroundColor,
     );
   }
 }

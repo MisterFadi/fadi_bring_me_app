@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/features/list_screen/screen/list_screen.dart';
 import 'package:fadi_bring_me_app/features/search_list.dart';
 import 'package:flutter/material.dart';
@@ -256,6 +257,7 @@ class _ProductScreenState extends State<ProductScreen> {
           ),
         ),
       ),
+      backgroundColor: backgroundColor,
     );
   }
 }

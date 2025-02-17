@@ -1,5 +1,6 @@
 import 'dart:developer' as dev;
 
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/features/folder_screen/widgets/task_counter_card.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class _FolderScreenState extends State<FolderScreen> {
     // Hier erstellen wir den String, der als "Produktname" übergeben wird.
     String newProduct = "Neuer Ordner"; // Beispiel-Produktname
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         title: Text(
           "BringMe",

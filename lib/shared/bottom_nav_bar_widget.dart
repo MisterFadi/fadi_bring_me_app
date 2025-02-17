@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/features/card_screen/screen/card_screen.dart';
 import 'package:fadi_bring_me_app/features/folder_screen/screen/folder_screen.dart';
 import 'package:fadi_bring_me_app/features/kamera_screen/screen/kamera_screen.dart';
@@ -27,6 +28,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       const ProfilScreen(),
     ];
     return Scaffold(
+      backgroundColor: navBarColor,
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
         onDestinationSelected: (index) {
@@ -39,11 +41,11 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
               selectedIcon: Icon(
                 Icons.list,
                 size: 40,
-                color: Colors.white,
+                color: Colors.red,
               ),
               icon: Icon(
                 Icons.list,
-                color: Colors.black54,
+                color: Colors.orange,
                 size: 40,
               ),
               label: ""),

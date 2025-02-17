@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/database/firebase/firebase_auth_repo.dart';
 import 'package:fadi_bring_me_app/features/home_screen/screen/home_screen.dart';
 import 'package:fadi_bring_me_app/features/settings/screens/settings_screen.dart';
@@ -12,6 +13,7 @@ class ProfilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         title: Row(
           children: [
@@ -66,10 +68,10 @@ class ProfilScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   const SizedBox(),
-                  Text("Fadi",
+                  Text(FirebaseAuthRepo().currentUser!.email!.toString(),
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headlineMedium),
-                  Text(FirebaseAuthRepo().currentUser!.email!.toString(),
+                  Text(FirebaseAuthRepo() as String,
                       style: Theme.of(context).textTheme.bodyMedium),
                   const SizedBox(height: 20),
                   Container(
