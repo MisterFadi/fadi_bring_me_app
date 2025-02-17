@@ -22,6 +22,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  final pageController = PageController(initialPage: 0);
+
   // @override
   // void dispose() {
   //   emailController.dispose();
@@ -31,233 +33,228 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
-          alignment: AlignmentDirectional.topCenter,
-          clipBehavior: Clip.none,
-          children: [
-            Positioned(
-              top: -15,
-              child: Container(
-                width: 60,
-                height: 7,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 30),
-                Text(
-                  textAlign: TextAlign.left,
-                  "Willkomen auf BringMe",
-                  style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: appColor),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onLongPress: () {
-                        _launchUrlG();
-                      },
-                      onTap: () {
-                        context.read<AuthRepo>().signInWithGoogle();
-                      },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          height: 65,
-                          width: 65,
-                          color: Colors.white,
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Image(
-                                image: AssetImage(
-                                    "assets/images/Google_logo.png")),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    GestureDetector(
-                      onLongPress: () {
-                        _launchUrlA();
-                      },
-                      onTap: () {
-                        context.read<AuthRepo>().signInWithGoogle();
-                      },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          height: 65,
-                          width: 65,
-                          color: Colors.white,
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Image(
-                                image:
-                                    AssetImage("assets/images/Apple_logo.png")),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 15),
-                const OderDeviderWidget(),
-                const SizedBox(height: 15),
-
-                //const SizedBox(height: 6),
-
-                const SizedBox(height: 10),
-                /*
-              TextButton(
-                onPressed: () {
-                  context.read<AuthRepo>().signInWithGoogle();
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const ListScreen(),
-                    ),
-                  );
-                },
-                child: const Text("Register with Google"),
-              ),
-              */
-
-                // SocialLoginButton(
-                //   width: 300,
-                //   borderRadius: 15,
-                //   buttonType: SocialLoginButtonType.google,
-                //   onPressed: () {
-                //     context.read<AuthRepo>().signInWithGoogle();
-                //   }, // _launchUrlG();
-                // ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
-                  child: TextFormField(
-                    controller: emailController,
-                    style: const TextStyle(color: Colors.black),
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.email),
-                      // iconColor: Colors.red,
-                      // labelText: "Email",
-                      // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
-                      hintText: "Email",
-                      hintStyle:
-                          const TextStyle(fontSize: 18, color: Colors.grey),
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
+    final size = MediaQuery.sizeOf(context);
+    return Material(
+      color: appColorLogo,
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(50),
+        topRight: Radius.circular(50),
+      ),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: SingleChildScrollView(
+        child: SizedBox(
+          height: size.height,
+          width: size.width,
+          child: PageView(
+            controller: pageController,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 30),
+                  Text(
+                    textAlign: TextAlign.left,
+                    "Willkomen auf BringMe",
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: appColor),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
-                  child: TextFormField(
-                    controller: passwordController,
-                    obscureText: showPassword,
-                    style: const TextStyle(color: Colors.black),
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.lock),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                            showPassword
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color: Colors.black),
-                        onPressed: () {
-                          setState(() {
-                            showPassword = !showPassword;
-                          });
+                  const SizedBox(
+                    height: 70,
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onLongPress: () {
+                          _launchUrlG();
                         },
-                      ),
-                      hintText: "Passwort",
-                      hintStyle:
-                          const TextStyle(fontSize: 18, color: Colors.grey),
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 7),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "Passwort vergessen?",
-                      textAlign: TextAlign.end,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal),
-                    ),
-                    SizedBox(width: 35),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                LoginButton(
-                  contHeight: 50,
-                  contWidth: 330,
-                  emailController: emailController,
-                  passwordController: passwordController,
-                ),
-                // const (child: SizedBox()),
-                const SizedBox(height: 30),
-                //const Spacer(),
-                //const RichtlinienWidget(),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignInScreen()));
-                  },
-                  child: RichText(
-                    text: TextSpan(
-                      style: Theme.of(context).textTheme.displaySmall,
-                      children: <TextSpan>[
-                        const TextSpan(
-                          text: "Noch kein Account? ",
-                          style: TextStyle(color: Colors.black, fontSize: 13),
+                        onTap: () {
+                          context.read<AuthRepo>().signInWithGoogle();
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            height: 65,
+                            width: 65,
+                            color: Colors.white,
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Image(
+                                  image: AssetImage(
+                                      "assets/images/Google_logo.png")),
+                            ),
+                          ),
                         ),
-                        TextSpan(
-                            text: "Hier Registrieren",
-                            style: TextStyle(
-                                color: appColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold)),
-                      ],
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      GestureDetector(
+                        onLongPress: () {
+                          _launchUrlA();
+                        },
+                        onTap: () {
+                          context.read<AuthRepo>().signInWithGoogle();
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            height: 65,
+                            width: 65,
+                            color: Colors.white,
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Image(
+                                  image: AssetImage(
+                                      "assets/images/Apple_logo.png")),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  const OderDeviderWidget(),
+                  const SizedBox(height: 15),
+                  //const SizedBox(height: 6),
+                  /*
+            TextButton(
+              onPressed: () {
+                context.read<AuthRepo>().signInWithGoogle();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const ListScreen(),
+                  ),
+                );
+              },
+              child: const Text("Register with Google"),
+            ),
+            */
+                  // SocialLoginButton(
+                  //   width: 300,
+                  //   borderRadius: 15,
+                  //   buttonType: SocialLoginButtonType.google,
+                  //   onPressed: () {
+                  //     context.read<AuthRepo>().signInWithGoogle();
+                  //   }, // _launchUrlG();
+                  // ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
+                    child: TextFormField(
+                      controller: emailController,
+                      style: TextStyle(color: colorTextFormField),
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.email),
+                        // iconColor: Colors.red,
+                        // labelText: "Email",
+                        // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
+                        hintText: "Email",
+                        hintStyle: TextStyle(
+                            fontSize: 18, color: colorTextFormFieldHintText),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
+                    child: TextFormField(
+                      controller: passwordController,
+                      obscureText: showPassword,
+                      style: TextStyle(color: colorTextFormField),
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.lock),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                              showPassword
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Colors.black),
+                          onPressed: () {
+                            setState(() {
+                              showPassword = !showPassword;
+                            });
+                          },
+                        ),
+                        hintText: "Passwort",
+                        hintStyle: TextStyle(
+                            fontSize: 18, color: colorTextFormFieldHintText),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Passwort vergessen?",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal),
+                      ),
+                      SizedBox(width: 35),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  LoginButton(
+                    contHeight: 50,
+                    contWidth: 330,
+                    emailController: emailController,
+                    passwordController: passwordController,
+                  ),
+                  // const (child: SizedBox()),
+                  const SizedBox(height: 45),
+                  //const Spacer(),
+                  //const RichtlinienWidget(),
+                  GestureDetector(
+                    onTap: () {
+                      pageController.animateToPage(1,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut);
+                    },
+                    child: RichText(
+                      text: TextSpan(
+                        style: Theme.of(context).textTheme.displaySmall,
+                        children: <TextSpan>[
+                          const TextSpan(
+                            text: "Noch kein Account? ",
+                            style: TextStyle(color: Colors.black, fontSize: 13),
+                          ),
+                          TextSpan(
+                              text: "Hier Registrieren",
+                              style: TextStyle(
+                                  color: appColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SignInScreen()
+            ],
+          ),
         ),
       ),
     );
