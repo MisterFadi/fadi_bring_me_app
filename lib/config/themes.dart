@@ -28,7 +28,6 @@ ThemeData myTheme = ThemeData(
   scaffoldBackgroundColor: appColorLogo,
   navigationBarTheme: NavigationBarThemeData(
       elevation: 0,
-      backgroundColor: appColor,
       labelTextStyle: const WidgetStatePropertyAll<TextStyle>(
           TextStyle(color: Colors.white)),
       surfaceTintColor: Colors.deepOrangeAccent,
