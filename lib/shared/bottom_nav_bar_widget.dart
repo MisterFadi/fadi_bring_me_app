@@ -27,6 +27,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       const CardScreen(),
       const ProfilScreen(),
     ];
+
     return Scaffold(
       backgroundColor: navBarColor,
       bottomNavigationBar: NavigationBar(
@@ -75,12 +76,12 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
               label: ""),
           NavigationDestination(
               selectedIcon: Icon(
-                Icons.shopping_cart_outlined,
+                Icons.auto_awesome_outlined,
                 size: 40,
                 color: Colors.white,
               ),
               icon: Icon(
-                Icons.shopping_cart_outlined,
+                Icons.auto_awesome_outlined,
                 color: Colors.black54,
                 size: 40,
               ),
