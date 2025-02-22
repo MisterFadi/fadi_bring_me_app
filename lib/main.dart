@@ -4,12 +4,14 @@ import 'package:fadi_bring_me_app/database/firebase/firebase_database_repo.dart'
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/features/home_screen/screen/home_screen.dart';
+import 'package:fadi_bring_me_app/features/list_screen/screen/list_screen.dart';
 import 'package:fadi_bring_me_app/firebase_options.dart';
 import 'package:fadi_bring_me_app/shared/bottom_nav_bar_widget.dart';
 import 'package:fadi_bring_me_app/splash_screen/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 /*
@@ -39,6 +41,7 @@ void main({bool useMock = true}) async {
 */
 
 void main() async {
+  await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -77,6 +80,7 @@ class MainApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           initialRoute: "SplashScreen",
           routes: {
+            "/listscreen": (context) => const ListScreen(),
             "SplashScreen": (context) => const SplashScreen(),
             "/home": (context) => const Scaffold(
                   body: HomeScreen(),
