@@ -1,10 +1,11 @@
 import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
-import 'package:fadi_bring_me_app/features/home_screen/screen/home_screen.dart';
+import 'package:fadi_bring_me_app/shared/bottom_nav_bar_widget.dart';
 import 'package:fadi_bring_me_app/shared/richtlinien_widget.dart';
 import 'package:fadi_bring_me_app/shared/sign_in_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({
@@ -32,6 +33,11 @@ class _SignInScreenState extends State<SignInScreen> {
   //   super.dispose();
   // }
 
+  Future<void> _saveUsername(String username) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("username", username);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -56,7 +62,7 @@ class _SignInScreenState extends State<SignInScreen> {
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.email),
+              prefixIcon: const Icon(Icons.person),
               // labelText: "Email",
               // labelStyle: const TextStyle(fontSize: 20, color: Colors.blueGrey),
               hintText: "Benutzername",
@@ -176,16 +182,24 @@ class _SignInScreenState extends State<SignInScreen> {
                     passwordController.text,
                     nameController.text);
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                );
+                // Speichere den Benutzernamen
+                await _saveUsername(nameController.text);
+                if (context.mounted) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BottomNavBarWidget(),
+                    ),
+                  );
+                }
               } catch (e) {
-                print(e);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                      content: Text("Registration failed: ${e.toString()}")),
-                );
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        content: Text("Registration failed: ${e.toString()}")),
+                  );
+                }
+                //print(e);
               }
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
