@@ -31,8 +31,9 @@ class FirebaseDatabaseRepo implements DatabaseRepository {
   @override
   Future<void> addProduct(String listProduct) async {
     await Future.delayed(const Duration(seconds: 1));
-    if (listProduct.isNotEmpty && !_items.contains(listProduct))
+    if (listProduct.isNotEmpty && !_items.contains(listProduct)) {
       _items.add(listProduct);
+    }
     // throw UnimplementedError();
   }
 }
