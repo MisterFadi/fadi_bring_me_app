@@ -30,6 +30,24 @@ class HomeScreen extends StatelessWidget {
   }
   */
 
+  void openModalSheet(BuildContext context) {
+    showModalBottomSheet(
+      useSafeArea: false,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      context: context,
+      builder: (context) => DraggableScrollableSheet(
+        minChildSize: 0.6,
+        maxChildSize: 1.0,
+        initialChildSize: 0.7,
+        controller: DraggableScrollableController(),
+        expand: false,
+        builder: (context, ScrollController scrollcontroller) =>
+            const LoginScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                     TyperAnimatedText("Sprite"),
                     TyperAnimatedText("Mexo-Mix"),
                     TyperAnimatedText("Vitaminsaft"),
-                    TyperAnimatedText("Schokoladen-Mousse"),
+                    TyperAnimatedText("Orangesaft"),
                   ],
                   repeatForever: true,
                 ),
@@ -102,20 +120,12 @@ class HomeScreen extends StatelessWidget {
                       backgroundColor:
                           WidgetStateProperty.all<Color>(appColor)),
                   onPressed: () {
-                    showModalBottomSheet(
-                      useSafeArea: true,
-                      isScrollControlled: true,
-                      context: context,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(10)),
-                      ),
-                      builder: (BuildContext context) {
-                        return const LoginScreen();
-                      },
-                    );
+                    openModalSheet(context);
                   },
                   child: AnimatedTextKit(
+                    onTap: () {
+                      openModalSheet(context);
+                    },
                     pause: const Duration(seconds: 5),
                     animatedTexts: [
                       TypewriterAnimatedText(
