@@ -9,7 +9,7 @@ abstract class AuthRepo {
   Future<AppUser?> signInWithEmailAndPassword(String email, String password);
 
   Future<AppUser?> createUserWithEmailAndPassword(
-      String email, String password);
+      String email, String password, String username);
 
   Future<dynamic> signInWithGoogle();
 

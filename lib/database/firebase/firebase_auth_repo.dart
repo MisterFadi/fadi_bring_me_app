@@ -44,16 +44,16 @@ class FirebaseAuthRepo implements AuthRepo {
       dev.log("Logged In Google");
     } on Exception catch (e) {
       dev.log('exception->$e');
-    } catch (e, s) {
-      print(e);
-      print(s);
+    } catch (e) {
+      // print(e);
+      // print(s);
     }
     return;
   }
 
   @override
   Future<AppUser?> createUserWithEmailAndPassword(
-      String email, String password) async {
+      String email, String password, String username) async {
     try {
       final credential = await firebaseAuth.createUserWithEmailAndPassword(
         email: email,
@@ -61,15 +61,23 @@ class FirebaseAuthRepo implements AuthRepo {
       );
       final user = credential.user;
       if (user == null) return null;
+
+      // Cloud Firestore
+      // FirebaseFirestore.instance.collection("users").doc(user.uid).set({"username": username, "email": email});
+
       return AppUser(userId: user.uid, email: user.email);
     } catch (e) {
       throw Exception("Failed to create user: $e");
     }
   }
 
+  // CustomUser
+
   @override
   AppUser? get currentUser {
     final user = firebaseAuth.currentUser;
+    // final doc = await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
+    // final username = (doc.data() as Map<String,dynamic>)["username"];
     if (user == null) return null;
     return AppUser(userId: user.uid, email: user.email);
   }

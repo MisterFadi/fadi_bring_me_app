@@ -8,7 +8,7 @@ class SharedPreferencesAuth implements AuthRepo {
 
   @override
   Future<AppUser?> createUserWithEmailAndPassword(
-      String email, String password) {
+      String email, String password, String username) {
     throw UnimplementedError();
   }
 
