@@ -21,6 +21,7 @@ class ProfilScreen extends StatefulWidget {
 }
 
 class ProfilScreenState extends State<ProfilScreen> {
+  final emailController = TextEditingController();
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
   final prefs = SharedPreferences.getInstance();
@@ -309,26 +310,101 @@ class ProfilScreenState extends State<ProfilScreen> {
               style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.all(appColorLogo)),
               onPressed: () {
-                pickImageFromGallery();
-                Navigator.of(context).pop();
+                setState(() {
+                  pickImageFromGallery();
+                  Navigator.of(context).pop();
+                });
               },
               child: Text(
                 "Galarie",
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
-            const Spacer(),
             ElevatedButton(
               style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.all(appColorLogo)),
               onPressed: () {
-                pickImageFromCamera();
-                Navigator.of(context).pop();
+                setState(() {
+                  pickImageFromCamera();
+                  Navigator.of(context).pop();
+                });
               },
               child: Text(
                 "Kamera",
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void forgotPasswordDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: alertDialog,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            side: const BorderSide(color: Colors.white, width: 3),
+          ),
+          title: const Text(
+            "Passwort zurücksetzen",
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
+          ),
+          content: TextField(
+            controller: emailController,
+            decoration: const InputDecoration(
+              labelText: "E-Mail nochmal eingeben",
+              labelStyle: TextStyle(color: Color.fromARGB(255, 255, 250, 245)),
+              enabledBorder: UnderlineInputBorder(
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 255, 250, 245)),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 255, 250, 245)),
+              ),
+            ),
+            style: TextStyle(color: whiteColor),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "Abbrechen",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(appColorLogo)),
+              onPressed: () async {
+                final authRepo =
+                    Provider.of<FirebaseAuthRepo>(context, listen: false);
+                try {
+                  await authRepo
+                      .sendPasswordResetEmail(emailController.text.trim());
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                        content: Text("Passwort-Reset-E-Mail gesendet")),
+                  );
+                  Navigator.of(context).pop();
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        content: Text(
+                            "Fehler beim Senden der Passwort-Reset-E-Mail: ${e.toString()}")),
+                  );
+                }
+              },
+              child:
+                  Text("Senden", style: Theme.of(context).textTheme.bodyMedium),
             ),
           ],
         );
@@ -456,6 +532,30 @@ class ProfilScreenState extends State<ProfilScreen> {
                                       color: whiteColor,
                                       onPressed: () {
                                         changePasswordDialog();
+                                      },
+                                      icon: const Icon(Icons.arrow_forward_ios))
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            color: appColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
+                                    "Passwort vergessen",
+                                  ),
+                                  const Expanded(
+                                    child: SizedBox(),
+                                  ),
+                                  IconButton(
+                                      color: whiteColor,
+                                      onPressed: () {
+                                        forgotPasswordDialog();
                                       },
                                       icon: const Icon(Icons.arrow_forward_ios))
                                 ],
