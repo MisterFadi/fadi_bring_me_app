@@ -1,12 +1,9 @@
-import 'dart:developer' as dev;
-
 import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/database/repository/database_repository.dart';
 import 'package:fadi_bring_me_app/features/folder_screen/widgets/task_counter_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timer_snackbar/timer_snackbar.dart';
 
 class FolderScreen extends StatefulWidget {
   const FolderScreen({
@@ -19,6 +16,7 @@ class FolderScreen extends StatefulWidget {
 
 class _FolderScreenState extends State<FolderScreen> {
   final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+  final controller = TextEditingController();
 
   int currentTaskCount = 0;
 
@@ -40,30 +38,31 @@ class _FolderScreenState extends State<FolderScreen> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
-          "BringMe",
+          "Notizen",
           style: Theme.of(context).textTheme.headlineLarge,
         ),
-        actions: [
-          IconButton(
-            onPressed: () => timerSnackbar(
-              context: context,
-              contentText: "Ein neuer Ordner wurde hinzugefügt.",
-              buttonPrefixWidget: const Icon(
-                Icons.keyboard_return_outlined,
-                color: Colors.white,
-              ),
-              afterTimeExecute: () =>
-                  dev.log("Ein neuer Ordner wurde hinzugefügt."),
-              second: 5, // Benachrichtigung nach 5 Sekunden
-            ),
-            icon: const Icon(
-              Icons.create_new_folder_outlined,
-              color: Colors.white,
-              size: 30,
-            ),
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () => timerSnackbar(
+        //       context: context,
+        //       contentText: "Ein neuer Ordner wurde hinzugefügt.",
+        //       buttonPrefixWidget: const Icon(
+        //         Icons.keyboard_return_outlined,
+        //         color: Colors.white,
+        //       ),
+        //       afterTimeExecute: () =>
+        //           dev.log("Ein neuer Ordner wurde hinzugefügt."),
+        //       second: 5, // Benachrichtigung nach 5 Sekunden
+        //     ),
+        //     icon: const Icon(
+        //       Icons.create_new_folder_outlined,
+        //       color: Colors.white,
+        //       size: 30,
+        //     ),
+        //   ),
+        // ],
       ),
       body: SafeArea(
         child: Padding(
@@ -121,6 +120,18 @@ class _FolderScreenState extends State<FolderScreen> {
                                 style: TextStyle(color: Colors.white),
                               )*/
                             },
+                          ),
+                          const Expanded(
+                            child: SizedBox(),
+                          ),
+                          TextField(
+                            style: TextStyle(color: appColorLogo),
+                            textInputAction: TextInputAction.send,
+                            onSubmitted: (value) {},
+                            controller: controller,
+                            decoration: InputDecoration(
+                                hintStyle: TextStyle(color: whiteColor),
+                                hintText: "Deine Notizen"),
                           ),
                         ],
                       ),
