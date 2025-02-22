@@ -26,12 +26,12 @@ class _SignInScreenState extends State<SignInScreen> {
   bool showPassword = true;
   bool showNewPassword = true;
 
-  // @override
-  // void dispose() {
-  //   emailController.dispose();
-  //   passwordController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   Future<void> _saveUsername(String username) async {
     final prefs = await SharedPreferences.getInstance();
