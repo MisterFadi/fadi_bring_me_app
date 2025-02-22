@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -77,7 +78,6 @@ class _KameraScreenState extends State<KameraScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
         body: SafeArea(
           child: Center(
             child: Column(
@@ -114,14 +114,29 @@ class _KameraScreenState extends State<KameraScreen> {
                         _selectedImage!,
                         scale: 0.2,
                       )
-                    : const Text("Bitte ein Bild hinzufügen")
+                    : RichText(
+                        text: TextSpan(
+                          style: Theme.of(context).textTheme.displaySmall,
+                          children: const <TextSpan>[
+                            TextSpan(
+                              text:
+                                  "Indem du BringMe verwendest, stimmst du unseren ",
+                            ),
+                            TextSpan(
+                              text: "Nutzungs- und \nDatenschutzbestimmungen ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            TextSpan(text: "zu"),
+                          ],
+                        ),
+                      ),
               ],
             ),
 
             //child: Image(image: AssetImage("assets/images/Kamera_open.png")),
           ),
         ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor
+        backgroundColor: backgroundColor
 
         //bottomNavigationBar: NavigationBar(destinations: destinations)
         );
