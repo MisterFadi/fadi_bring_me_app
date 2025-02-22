@@ -10,3 +10,4 @@ Color appBarColor = Colors.red;
 Color navBarColor = Colors.green.shade900;
 Color alertDialog = Colors.green.shade700;
 Color whiteColor = Colors.white;
+Color elevatedButtonColor = Colors.blue.shade500;
