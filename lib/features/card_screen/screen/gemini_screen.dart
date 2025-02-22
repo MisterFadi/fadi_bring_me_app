@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
-class CardScreen extends StatefulWidget {
-  const CardScreen({
+class GeminiScreen extends StatefulWidget {
+  const GeminiScreen({
     super.key,
   });
 
   @override
-  State<CardScreen> createState() => _CardScreenState();
+  State<GeminiScreen> createState() => _GeminiScreenState();
 }
 
-class _CardScreenState extends State<CardScreen> {
+class _GeminiScreenState extends State<GeminiScreen> {
   late GenerativeModel _model;
   final String? apiKey = dotenv.env['API_KEY'];
   final _controller = TextEditingController();
@@ -50,6 +50,7 @@ class _CardScreenState extends State<CardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Künstliche Intelligenz",
           style: Theme.of(context).textTheme.bodyLarge,
@@ -63,41 +64,46 @@ class _CardScreenState extends State<CardScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: ListView.builder(
-                  itemCount: _messages.length,
-                  itemBuilder: (context, index) {
-                    final message = _messages[index];
-                    return Align(
-                      alignment: message.containsKey('user')
-                          ? Alignment.centerRight
-                          : Alignment.centerLeft,
-                      child: Container(
-                        margin: const EdgeInsets.only(bottom: 8),
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 12),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            //border: Border.all(),
-                            color: message.containsKey('user')
-                                ? Colors.green.shade600
-                                : Colors.green.shade800),
-                        child: Text(
-                          textAlign: message.containsKey('user')
-                              ? TextAlign.end
-                              : TextAlign.start,
-                          style: TextStyle(
-                            color: message.containsKey('user')
-                                ? Colors.white
-                                : Colors.white,
+                child: Scrollbar(
+                  thumbVisibility: true,
+                  trackVisibility: true,
+                  child: ListView.builder(
+                    physics: const ScrollPhysics(),
+                    itemCount: _messages.length,
+                    itemBuilder: (context, index) {
+                      final message = _messages[index];
+                      return Align(
+                        alignment: message.containsKey('user')
+                            ? Alignment.centerRight
+                            : Alignment.centerLeft,
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 8),
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 8, horizontal: 12),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              //border: Border.all(),
+                              color: message.containsKey('user')
+                                  ? Colors.green.shade600
+                                  : Colors.green.shade800),
+                          child: Text(
+                            textAlign: message.containsKey('user')
+                                ? TextAlign.end
+                                : TextAlign.start,
+                            style: TextStyle(
+                              color: message.containsKey('user')
+                                  ? Colors.white
+                                  : Colors.white,
+                            ),
+                            message.containsKey('user')
+                                ? '${message['user']}'
+                                : '${message['gemini']}',
                           ),
-                          message.containsKey('user')
-                              ? '${message['user']}'
-                              : '${message['gemini']}',
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
               Padding(

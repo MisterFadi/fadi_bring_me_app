@@ -1,5 +1,5 @@
 import 'package:fadi_bring_me_app/config/colors.dart';
-import 'package:fadi_bring_me_app/features/card_screen/screen/card_screen.dart';
+import 'package:fadi_bring_me_app/features/card_screen/screen/gemini_screen.dart';
 import 'package:fadi_bring_me_app/features/folder_screen/screen/folder_screen.dart';
 import 'package:fadi_bring_me_app/features/kamera_screen/screen/kamera_screen.dart';
 import 'package:fadi_bring_me_app/features/list_screen/screen/product_screen.dart';
@@ -24,7 +24,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       const ProductScreen(),
       const FolderScreen(), // Hier repository übergeben
       const KameraScreen(),
-      const CardScreen(),
+      const GeminiScreen(),
       const ProfilScreen(),
     ];
 
