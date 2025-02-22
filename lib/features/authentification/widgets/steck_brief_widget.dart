@@ -18,7 +18,7 @@ class SteckBriefWidget extends StatelessWidget {
         //mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(width: 70),
-          Container(
+          SizedBox(
             height: 70,
             width: 70,
             child: Image.asset(image),
