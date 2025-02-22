@@ -1,11 +1,32 @@
 import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/database/firebase/firebase_auth_repo.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({
     super.key,
   });
+
+  @override
+  _SettingsScreenState createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  String? username;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUsername();
+  }
+
+  Future<void> _loadUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      username = prefs.getString("username");
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +48,7 @@ class SettingsScreen extends StatelessWidget {
                     backgroundImage: AssetImage("assets/images/Fadi_Emoji.jpg"),
                   ),
                   const SizedBox(height: 20),
-                  Text("Fadi",
+                  Text(username ?? "Kein Benutzername",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headlineMedium),
                   Text(FirebaseAuthRepo().currentUser!.email!.toString(),
