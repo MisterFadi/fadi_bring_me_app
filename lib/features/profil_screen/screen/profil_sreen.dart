@@ -68,11 +68,13 @@ class ProfilScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   const SizedBox(),
-                  Text(FirebaseAuthRepo().currentUser!.email!.toString(),
+                  Text(
+                      FirebaseAuthRepo().currentUser!.email!.toString() ??
+                          "Keine Daten",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headlineMedium),
-                  Text(FirebaseAuthRepo() as String,
-                      style: Theme.of(context).textTheme.bodyMedium),
+                  //Text(FirebaseAuthRepo() as String,
+                  //style: Theme.of(context).textTheme.bodyMedium),
                   const SizedBox(height: 20),
                   Container(
                     height: 180,
