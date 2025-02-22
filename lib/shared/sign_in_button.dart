@@ -37,7 +37,7 @@ class _SignInButtonState extends State<SignInButton> {
         emailController.text.trim(),
         passwordController.text.trim(),
       );
-      Navigator.pushNamed(context, "/bottomnavbarwidget");
+      Navigator.pushNamed(context, "/listscreen");
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Login fehlgeschlagen: ${e.toString()}")),
