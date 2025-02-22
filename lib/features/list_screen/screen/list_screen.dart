@@ -1,4 +1,3 @@
-import 'package:fadi_bring_me_app/features/list_screen/screen/product_screen.dart';
 import 'package:fadi_bring_me_app/features/search_list.dart';
 import 'package:flutter/material.dart';
 
@@ -17,22 +16,14 @@ class _ListScreenState extends State<ListScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Row(
+        title: const Row(
           children: [
-            const SizedBox(width: 0),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ProductScreen()));
-              },
-              child: const Text(
-                "Schließen",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
+            SizedBox(width: 0),
+            Text(
+              "Schließen",
+              style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            const Spacer(),
+            Spacer(),
             // GestureDetector(
             //   onTap: () {
             //     Navigator.push(
@@ -45,11 +36,11 @@ class _ListScreenState extends State<ListScreen> {
             //     style: TextStyle(color: Colors.white, fontSize: 20),
             //   ),
             // ),
-            const Text(
+            Text(
               "Bearbeiten",
               style: TextStyle(color: Colors.white, fontSize: 10),
             ),
-            const SizedBox(width: 0),
+            SizedBox(width: 0),
           ],
         ),
       ),
