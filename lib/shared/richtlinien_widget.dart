@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,22 +16,23 @@ class RichtlinienWidget extends StatelessWidget {
           onTap: () {
             // print("Indem du BringMe verwendest, stimmst du unseren Nutzungs- und Datenschutzbestimmungen zu.");
           },
-          child: GestureDetector(
-            onTap: _launchUrl,
-            child: RichText(
-              text: TextSpan(
-                style: Theme.of(context).textTheme.displaySmall,
-                children: const <TextSpan>[
-                  TextSpan(
-                    text: "Indem du BringMe verwendest, stimmst du unseren ",
-                  ),
-                  TextSpan(
-                    text: "Nutzungs- und \nDatenschutzbestimmungen ",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  TextSpan(text: "zu"),
-                ],
-              ),
+          child: RichText(
+            text: TextSpan(
+              style: Theme.of(context).textTheme.displaySmall,
+              children: <TextSpan>[
+                const TextSpan(
+                  text: "Indem du BringMe verwendest, stimmst du unseren ",
+                ),
+                TextSpan(
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      _launchUrl();
+                    },
+                  text: "Nutzungs- und \nDatenschutzbestimmungen ",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const TextSpan(text: "zu"),
+              ],
             ),
           ),
         ),
@@ -46,7 +48,6 @@ Future<void> _launchUrl() async {
     throw Exception("Seite konnte nicht geladen werden $url");
   }
 }
-
 
 /*
           "Indem du BringMe verwendest, stimmst du unseren Nutzungs- und Datenschutzbestimmungen zu.",
