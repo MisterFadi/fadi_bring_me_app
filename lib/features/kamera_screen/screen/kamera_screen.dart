@@ -18,7 +18,7 @@ class KameraScreen extends StatefulWidget {
 class _KameraScreenState extends State<KameraScreen> {
   final prefs = SharedPreferences.getInstance();
 
-  File? _selectedImage;
+  File? selectedImage;
 /*
   @override
   void initState() {
@@ -71,7 +71,7 @@ class _KameraScreenState extends State<KameraScreen> {
 
   @override
   void initState() {
-    _selectedImage = null;
+    selectedImage = null;
     super.initState();
   }
 
@@ -86,7 +86,7 @@ class _KameraScreenState extends State<KameraScreen> {
                 MaterialButton(
                   color: Colors.blue,
                   onPressed: () {
-                    _pickImageFromGallery();
+                    pickImageFromGallery();
                   },
                   child: const Text(
                     "     Gallery       ",
@@ -100,7 +100,7 @@ class _KameraScreenState extends State<KameraScreen> {
                 MaterialButton(
                   color: Colors.red,
                   onPressed: () {
-                    _pickImageFromCamera();
+                    pickImageFromCamera();
                   },
                   child: const Text(
                     "      Kamera       ",
@@ -109,9 +109,9 @@ class _KameraScreenState extends State<KameraScreen> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                _selectedImage != null
+                selectedImage != null
                     ? Image.file(
-                        _selectedImage!,
+                        selectedImage!,
                         scale: 0.2,
                       )
                     : RichText(
@@ -142,21 +142,21 @@ class _KameraScreenState extends State<KameraScreen> {
         );
   }
 
-  Future _pickImageFromGallery() async {
+  Future pickImageFromGallery() async {
     final returnedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (returnedImage == null) return;
     setState(() {
-      _selectedImage = File(returnedImage.path);
+      selectedImage = File(returnedImage.path);
     });
   }
 
-  Future _pickImageFromCamera() async {
+  Future pickImageFromCamera() async {
     final returnedImage =
         await ImagePicker().pickImage(source: ImageSource.camera);
     if (returnedImage == null) return;
     setState(() {
-      _selectedImage = File(returnedImage.path);
+      selectedImage = File(returnedImage.path);
     });
   }
 /*
