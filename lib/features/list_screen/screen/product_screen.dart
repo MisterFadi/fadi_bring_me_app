@@ -1,5 +1,4 @@
 import 'package:fadi_bring_me_app/config/colors.dart';
-import 'package:fadi_bring_me_app/features/list_screen/screen/list_screen.dart';
 import 'package:fadi_bring_me_app/features/search_list.dart';
 import 'package:flutter/material.dart';
 
@@ -18,45 +17,9 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ListScreen(),
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-                size: 30,
-              ),
-            ),
-            const Text(
-              "Listen",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const Spacer(),
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ProductScreen(),
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.share_rounded,
-                color: Colors.white,
-                size: 30,
-              ),
-            ),
-            const SizedBox(width: 10),
-          ],
+        title: const Text(
+          "sdfsdfsdfsdfsdf",
+          style: TextStyle(color: Colors.white, fontSize: 20),
         ),
       ),
       body: SafeArea(
