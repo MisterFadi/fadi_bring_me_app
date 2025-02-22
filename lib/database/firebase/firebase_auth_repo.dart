@@ -31,24 +31,22 @@ class FirebaseAuthRepo implements AuthRepo {
   Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
 
   @override
-  Future<dynamic> signInWithGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
-      await firebaseAuth.signInWithCredential(credential);
-      dev.log("Logged In Google");
-    } on Exception catch (e) {
-      dev.log('exception->$e');
-    } catch (e) {
-      // print(e);
-      // print(s);
-    }
-    return;
+  Future<AppUser?> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    if (googleUser == null) return null;
+
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    final authResult = await firebaseAuth.signInWithCredential(credential);
+    final user = authResult.user;
+    if (user == null) return null;
+
+    return AppUser(userId: user.uid, email: user.email);
   }
 
   @override

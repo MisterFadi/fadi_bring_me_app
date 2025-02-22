@@ -2,6 +2,7 @@ import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/database/repository/auth_repo.dart';
 import 'package:fadi_bring_me_app/features/authentification/screens/sign_in_screen.dart';
 import 'package:fadi_bring_me_app/features/authentification/widgets/oder_devider_widget.dart';
+import 'package:fadi_bring_me_app/shared/bottom_nav_bar_widget.dart';
 import 'package:fadi_bring_me_app/shared/login_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,12 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final pageController = PageController(initialPage: 0);
 
-  // @override
-  // void dispose() {
-  //   emailController.dispose();
-  //   passwordController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +73,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         onLongPress: () {
                           _launchUrlG();
                         },
-                        onTap: () {
-                          context.read<AuthRepo>().signInWithGoogle();
+                        onTap: () async {
+                          await context.read<AuthRepo>().signInWithGoogle();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const BottomNavBarWidget(),
+                            ),
+                          );
                         },
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
