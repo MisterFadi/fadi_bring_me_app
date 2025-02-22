@@ -14,36 +14,6 @@ class _ListScreenState extends State<ListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Row(
-          children: [
-            SizedBox(width: 0),
-            Text(
-              "Schließen",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            Spacer(),
-            // GestureDetector(
-            //   onTap: () {
-            //     Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //             builder: (context) => const ProductScreen()));
-            //   },
-            //   child: const Text(
-            //     "Bearbeiten",
-            //     style: TextStyle(color: Colors.white, fontSize: 20),
-            //   ),
-            // ),
-            Text(
-              "Bearbeiten",
-              style: TextStyle(color: Colors.white, fontSize: 10),
-            ),
-            SizedBox(width: 0),
-          ],
-        ),
-      ),
       body: SafeArea(
         child: Center(
           child: Column(
