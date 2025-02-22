@@ -88,4 +88,29 @@ class FirebaseAuthRepo implements AuthRepo {
     await googleSignIn.signOut();
     await firebaseAuth.signOut();
   }
+
+  @override
+  Future<void> deleteAccount(String userId) async {
+    final user = firebaseAuth.currentUser;
+    if (user != null && user.uid == userId) {
+      await user.delete();
+    }
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await firebaseAuth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      throw Exception("Failed to send password reset email: $e");
+    }
+  }
+
+  @override
+  Future<void> updateEmail(String email) async {
+    final user = firebaseAuth.currentUser;
+    if (user != null) {
+      await user.updateEmail(email);
+    }
+  }
 }

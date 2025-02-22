@@ -29,4 +29,19 @@ class SharedPreferencesAuth implements AuthRepo {
   Future<void> signOut() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> deleteAccount(String userId) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail(String email) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> updateEmail(String email) {
+    throw UnimplementedError();
+  }
 }
