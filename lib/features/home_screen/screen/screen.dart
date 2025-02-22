@@ -7,10 +7,10 @@ class Screen extends StatefulWidget {
   const Screen({super.key});
 
   @override
-  _ScreenState createState() => _ScreenState();
+  ScreenState createState() => ScreenState();
 }
 
-class _ScreenState extends State<Screen> {
+class ScreenState extends State<Screen> {
   // Generate a list of widgets. You can use another way
   List<Widget> widgets = List.generate(
     10,
