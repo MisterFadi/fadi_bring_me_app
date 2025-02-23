@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 
-class TaskCounterCard extends StatelessWidget {
+class TaskCounterCard extends StatefulWidget {
   final int taskCount;
 
   const TaskCounterCard({super.key, required this.taskCount});
 
   @override
+  State<TaskCounterCard> createState() => _TaskCounterCardState();
+}
+
+class _TaskCounterCardState extends State<TaskCounterCard> {
+  final controller = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          /*
           Text(
             "$taskCount",
             style: const TextStyle(
@@ -19,16 +27,9 @@ class TaskCounterCard extends StatelessWidget {
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
-          ),
-          const SizedBox(width: 16),
-          const Expanded(
-            child: Text(
-              "Hier kommt eine Einkaufsliste !!! \nZum selber schreiben,bearbeiten und löschen",
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-          ),
+            */
+
+          SizedBox(width: 16),
         ],
       ),
     );
