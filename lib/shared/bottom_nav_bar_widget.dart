@@ -1,6 +1,6 @@
 import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/features/card_screen/screen/gemini_screen.dart';
-import 'package:fadi_bring_me_app/features/folder_screen/screen/folder_screen.dart';
+import 'package:fadi_bring_me_app/features/folder_screen/screen/note_screen.dart';
 import 'package:fadi_bring_me_app/features/kamera_screen/screen/kamera_screen.dart';
 import 'package:fadi_bring_me_app/features/list_screen/screen/product_screen.dart';
 import 'package:fadi_bring_me_app/features/profil_screen/screen/profil_sreen.dart';
@@ -22,79 +22,71 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     // Jetzt übergeben wir repository an FolderScreen
     final List<Widget> widgets = [
       const ProductScreen(),
-      const FolderScreen(), // Hier repository übergeben
+      const NoteScreen(), // Hier repository übergeben
       const KameraScreen(),
       const GeminiScreen(),
       const ProfilScreen(),
     ];
 
     return Scaffold(
-      backgroundColor: navBarColor,
       bottomNavigationBar: NavigationBar(
+        backgroundColor: appColor,
+        indicatorShape: Border.all(width: 0.5),
+        indicatorColor: appColorLogo,
         selectedIndex: currentIndex,
         onDestinationSelected: (index) {
           setState(() {
             currentIndex = index;
           });
         },
-        destinations: const [
+        destinations: [
           NavigationDestination(
-              selectedIcon: Icon(
-                Icons.list,
-                size: 40,
-                color: Colors.red,
-              ),
+              selectedIcon: Icon(Icons.list, size: 40, color: appColor),
               icon: Icon(
                 Icons.list,
-                color: Colors.orange,
+                color: appColorLogo,
                 size: 40,
               ),
               label: ""),
           NavigationDestination(
               selectedIcon: Icon(
-                Icons.folder_open,
+                Icons.edit_document,
                 size: 40,
-                color: Colors.white,
+                color: appColor,
               ),
               icon: Icon(
-                Icons.folder_open,
+                Icons.edit_document,
                 size: 40,
-                color: Colors.black54,
+                color: appColorLogo,
               ),
               label: ""),
           NavigationDestination(
               selectedIcon: Icon(
                 Icons.add_circle_outline,
-                size: 70,
-                color: Colors.white,
+                size: 55,
+                color: appColor,
               ),
               icon: Icon(
                 Icons.add_circle_outline,
-                color: Colors.black54,
-                size: 70,
+                color: appColorLogo,
+                size: 55,
               ),
               label: ""),
           NavigationDestination(
-              selectedIcon: Icon(
-                Icons.auto_awesome_outlined,
-                size: 40,
-                color: Colors.white,
-              ),
+              selectedIcon:
+                  Icon(Icons.auto_awesome_outlined, size: 40, color: appColor),
               icon: Icon(
                 Icons.auto_awesome_outlined,
-                color: Colors.black54,
+                color: appColorLogo,
                 size: 40,
               ),
               label: ""),
           NavigationDestination(
-            selectedIcon: Icon(
-              Icons.person_2_outlined,
-              size: 40,
-              color: Colors.white,
-            ),
+            selectedIcon:
+                Icon(Icons.person_2_outlined, size: 40, color: appColor),
             icon: Icon(
               Icons.person_2_outlined,
-              color: Colors.black54,
+              color: appColorLogo,
               size: 40,
             ),
             label: "",
