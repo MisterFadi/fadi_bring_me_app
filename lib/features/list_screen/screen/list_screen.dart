@@ -1,3 +1,4 @@
+import 'package:fadi_bring_me_app/config/colors.dart';
 import 'package:fadi_bring_me_app/features/search_list.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class _ListScreenState extends State<ListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: appColor,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -34,10 +36,8 @@ class _ListScreenState extends State<ListScreen> {
                   height: 50,
                   width: 300,
                   decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromARGB(255, 242, 232, 207),
-                      ),
+                    boxShadow: [
+                      BoxShadow(color: appColorLogo),
                     ],
                     borderRadius: BorderRadius.circular(10),
                   ),
