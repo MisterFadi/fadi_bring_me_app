@@ -1,4 +1,5 @@
 import 'package:fadi_bring_me_app/config/colors.dart';
+import 'package:fadi_bring_me_app/features/list_screen/screen/list_screen.dart';
 import 'package:fadi_bring_me_app/features/search_list.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class _ProductScreenState extends State<ProductScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text(
-          "sdfsdfsdfsdfsdf",
+          "Listenansicht",
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
       ),
@@ -42,16 +43,14 @@ class _ProductScreenState extends State<ProductScreen> {
                   height: 50,
                   width: 300,
                   decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromARGB(255, 242, 232, 207),
-                      ),
+                    boxShadow: [
+                      BoxShadow(color: appColor),
                     ],
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Text("Party-Liste",
-                        style: Theme.of(context).textTheme.headlineSmall),
+                        style: Theme.of(context).textTheme.bodyLarge),
                   ),
                 ),
               ),
@@ -67,16 +66,16 @@ class _ProductScreenState extends State<ProductScreen> {
                   height: 50,
                   width: 300,
                   decoration: BoxDecoration(
-                    boxShadow: const [
+                    boxShadow: [
                       BoxShadow(
-                        color: Color.fromARGB(255, 242, 232, 207),
+                        color: appColor,
                       ),
                     ],
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Text("Shopping-Liste",
-                        style: Theme.of(context).textTheme.headlineSmall),
+                        style: Theme.of(context).textTheme.bodyLarge),
                   ),
                 ),
               ),
@@ -92,16 +91,14 @@ class _ProductScreenState extends State<ProductScreen> {
                   height: 50,
                   width: 300,
                   decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromARGB(255, 242, 232, 207),
-                      ),
+                    boxShadow: [
+                      BoxShadow(color: appColor),
                     ],
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Text("Wocheneinkaufs-Liste",
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context).textTheme.bodyLarge,
                         selectionColor: Colors.blueAccent),
                   ),
                 ),
@@ -118,16 +115,14 @@ class _ProductScreenState extends State<ProductScreen> {
                   height: 60,
                   width: 300,
                   decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromARGB(255, 242, 232, 207),
-                      ),
+                    boxShadow: [
+                      BoxShadow(color: appColor),
                     ],
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Text("+ Neue Liste",
-                        style: Theme.of(context).textTheme.headlineSmall),
+                        style: Theme.of(context).textTheme.bodyLarge),
                   ),
                 ),
               ),
@@ -147,16 +142,14 @@ class _ProductScreenState extends State<ProductScreen> {
                       height: 150,
                       width: 100,
                       decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromARGB(255, 242, 232, 207),
-                          ),
+                        boxShadow: [
+                          BoxShadow(color: appColor),
                         ],
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                         child: Text("Dessert",
-                            style: Theme.of(context).textTheme.headlineSmall),
+                            style: Theme.of(context).textTheme.bodyLarge),
                       ),
                     ),
                   ),
@@ -172,16 +165,14 @@ class _ProductScreenState extends State<ProductScreen> {
                       height: 150,
                       width: 100,
                       decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromARGB(255, 242, 232, 207),
-                          ),
+                        boxShadow: [
+                          BoxShadow(color: appColor),
                         ],
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                         child: Text("Shopping",
-                            style: Theme.of(context).textTheme.headlineSmall),
+                            style: Theme.of(context).textTheme.bodyLarge),
                       ),
                     ),
                   ),
@@ -191,22 +182,20 @@ class _ProductScreenState extends State<ProductScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SearchList()));
+                              builder: (context) => const ListScreen()));
                     },
                     child: Container(
                       height: 150,
                       width: 100,
                       decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromARGB(255, 242, 232, 207),
-                          ),
+                        boxShadow: [
+                          BoxShadow(color: appColor),
                         ],
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                         child: Text("Büro",
-                            style: Theme.of(context).textTheme.headlineSmall),
+                            style: Theme.of(context).textTheme.bodyLarge),
                       ),
                     ),
                   ),
