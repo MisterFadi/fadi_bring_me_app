@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class FolderScreen extends StatefulWidget {
-  const FolderScreen({
+class NoteScreen extends StatefulWidget {
+  const NoteScreen({
     super.key,
   });
 
   @override
-  State<FolderScreen> createState() => _FolderScreenState();
+  State<NoteScreen> createState() => _NoteScreenState();
 }
 
-class _FolderScreenState extends State<FolderScreen> {
+class _NoteScreenState extends State<NoteScreen> {
   final SharedPreferencesAsync prefs = SharedPreferencesAsync();
   final controller = TextEditingController();
 
@@ -124,14 +124,35 @@ class _FolderScreenState extends State<FolderScreen> {
                           const Expanded(
                             child: SizedBox(),
                           ),
-                          TextField(
-                            style: TextStyle(color: appColorLogo),
-                            textInputAction: TextInputAction.send,
-                            onSubmitted: (value) {},
-                            controller: controller,
-                            decoration: InputDecoration(
-                                hintStyle: TextStyle(color: whiteColor),
-                                hintText: "Deine Notizen"),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 0, right: 0, top: 10),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: TextField(
+                                    style: TextStyle(color: appColorLogo),
+                                    textInputAction: TextInputAction.send,
+                                    onSubmitted: (value) {},
+                                    controller: controller,
+                                    decoration: InputDecoration(
+                                        hintStyle: TextStyle(color: whiteColor),
+                                        hintText: "Deine Notizen"),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 15,
+                                ),
+                                CircleAvatar(
+                                  backgroundColor: appColorLogo,
+                                  child: IconButton(
+                                    color: appColor,
+                                    icon: const Icon(Icons.send),
+                                    onPressed: () {},
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
