@@ -108,28 +108,22 @@ class _KameraScreenState extends State<KameraScreen> {
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(height: 30),
+                const Expanded(
+                  child: SizedBox(),
+                ),
                 selectedImage != null
                     ? Image.file(
                         selectedImage!,
                         scale: 0.2,
                       )
-                    : RichText(
-                        text: TextSpan(
-                          style: Theme.of(context).textTheme.displaySmall,
-                          children: const <TextSpan>[
-                            TextSpan(
-                              text:
-                                  "Indem du BringMe verwendest, stimmst du unseren ",
-                            ),
-                            TextSpan(
-                              text: "Nutzungs- und \nDatenschutzbestimmungen ",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(text: "zu"),
-                          ],
-                        ),
-                      ),
+                    : const Text("Bilder hier einfügen"),
+                const Expanded(
+                  child: SizedBox(),
+                ),
+                // const RichtlinienWidget(),
+                // const SizedBox(
+                //   height: 30,
+                // ),
               ],
             ),
 
