@@ -434,11 +434,29 @@ class ProfilScreenState extends State<ProfilScreen> {
                 children: [
                   Stack(
                     children: [
-                      CircleAvatar(
-                        radius: 70,
-                        backgroundImage: selectedImage != null
-                            ? FileImage(selectedImage!)
-                            : const AssetImage("assets/images/leerePerson.jpg"),
+                      GestureDetector(
+                        onTap: () {
+                          if (selectedImage != null) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ImagePreviewScreen(image: selectedImage!),
+                              ),
+                            );
+                          } else {
+                            const AssetImage("assets/images/leerePerson.jpg");
+                          }
+                        },
+                        child: Hero(
+                          tag: 'profileImage',
+                          child: CircleAvatar(
+                            radius: 70,
+                            backgroundImage: selectedImage != null
+                                ? FileImage(selectedImage!)
+                                : const AssetImage(
+                                    "assets/images/leerePerson.jpg"),
+                          ),
+                        ),
                       ),
                       Positioned(
                         left: 100,
@@ -683,6 +701,14 @@ class ProfilScreenState extends State<ProfilScreen> {
     });
   }
 
+  Future<void> deleteImage(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('profile_image_path');
+    setState(() {
+      selectedImage = null;
+    });
+  }
+
   Future pickImageFromCamera() async {
     final returnedImage =
         await ImagePicker().pickImage(source: ImageSource.camera);
@@ -698,58 +724,48 @@ class ProfilScreenState extends State<ProfilScreen> {
   }
 }
 
-// class DeleteAccountDialog extends StatelessWidget {
-//   final VoidCallback onDelete;
+class ImagePreviewScreen extends StatelessWidget {
+  final File image;
 
-//   const DeleteAccountDialog({required this.onDelete, super.key});
+  const ImagePreviewScreen({required this.image, super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return AlertDialog(
-//       shape: RoundedRectangleBorder(
-//         borderRadius: BorderRadius.circular(10.0),
-//         side: const BorderSide(color: Colors.white, width: 1),
-//       ),
-//       title: const Text(
-//         "Konto löschen",
-//         style: TextStyle(
-//           color: Color.fromARGB(255, 246, 191, 143),
-//         ),
-//       ),
-//       content: const Text(
-//         "Möchten Sie Ihr Konto wirklich löschen?",
-//         style: TextStyle(
-//           color: Color.fromARGB(255, 255, 250, 245),
-//         ),
-//       ),
-//       actions: [
-//         TextButton(
-//           onPressed: () {
-//             Navigator.of(context).pop();
-//           },
-//           child: const Text(
-//             "Abbrechen",
-//             style: TextStyle(
-//               color: Color.fromARGB(255, 255, 108, 3),
-//             ),
-//           ),
-//         ),
-//         TextButton(
-//           onPressed: () async {
-//             Navigator.of(context).pop();
-//             onDelete();
-//           },
-//           child: const Text(
-//             "Löschen",
-//             style: TextStyle(
-//               color: Color.fromARGB(255, 255, 108, 3),
-//             ),
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
+  Future<void> deleteImage(context) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('profile_image_path');
+
+    Navigator.of(context).pop();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Bildvorschau",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              deleteImage(context);
+              // Add your delete action here
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: Hero(
+          tag: 'profileImage',
+          child: Image.file(image),
+        ),
+      ),
+    );
+  }
+}
 
 Future<void> _launchUrl() async {
   final Uri url = Uri.parse(
