@@ -22,7 +22,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     // Jetzt übergeben wir repository an FolderScreen
     final List<Widget> widgets = [
       const ProductScreen(),
-      const NoteScreen(), // Hier repository übergeben
+      const NoteScreen(),
       const KameraScreen(),
       const GeminiScreen(),
       const ProfilScreen(),
@@ -30,8 +30,9 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
 
     return Scaffold(
       bottomNavigationBar: NavigationBar(
+        height: 80,
         backgroundColor: appColor,
-        indicatorShape: Border.all(width: 0.5),
+        indicatorShape: Border.all(width: 0.7),
         indicatorColor: appColorLogo,
         selectedIndex: currentIndex,
         onDestinationSelected: (index) {
