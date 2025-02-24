@@ -77,10 +77,11 @@ class _GeminiScreenState extends State<GeminiScreen> {
                             ? Alignment.centerRight
                             : Alignment.centerLeft,
                         child: Container(
-                          margin: const EdgeInsets.only(bottom: 8),
+                          margin: const EdgeInsets.only(
+                              bottom: 7, left: 10, right: 10),
                           width: MediaQuery.of(context).size.width * 0.8,
                           padding: const EdgeInsets.symmetric(
-                              vertical: 8, horizontal: 12),
+                              vertical: 6, horizontal: 15),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               //border: Border.all(),
