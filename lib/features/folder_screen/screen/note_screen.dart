@@ -15,12 +15,14 @@ class NoteScreen extends StatefulWidget {
 }
 
 class _NoteScreenState extends State<NoteScreen> {
-  final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+  final prefs = SharedPreferences.getInstance();
   final controller = TextEditingController();
 
   int currentTaskCount = 0;
+  String taskText = ""; // Neue Eigenschaft
 
   void loadItemCount() async {
+    //final prefs = await SharedPreferences.getInstance();
     int taskCount = await context.read<DatabaseRepository>().productCount;
 
     if (taskCount != currentTaskCount) {
@@ -39,9 +41,9 @@ class _NoteScreenState extends State<NoteScreen> {
       backgroundColor: backgroundColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
+        title: const Text(
           "Notizen",
-          style: Theme.of(context).textTheme.headlineLarge,
+          style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         // actions: [
         //   IconButton(
@@ -110,10 +112,12 @@ class _NoteScreenState extends State<NoteScreen> {
                               }
                               if (snapshot.hasData) {
                                 return TaskCounterCard(
-                                    taskCount: currentTaskCount);
+                                    taskCount: currentTaskCount,
+                                    taskText: taskText); // Übergabe des Textes
                               }
                               return TaskCounterCard(
-                                  taskCount: currentTaskCount);
+                                  taskCount: currentTaskCount,
+                                  taskText: taskText); // Übergabe des Textes
 
                               /* Text(
                                 "Noch keine Daten vorhanden.",
@@ -133,7 +137,12 @@ class _NoteScreenState extends State<NoteScreen> {
                                   child: TextField(
                                     style: TextStyle(color: appColorLogo),
                                     textInputAction: TextInputAction.send,
-                                    onSubmitted: (value) {},
+                                    onSubmitted: (value) {
+                                      setState(() {
+                                        taskText =
+                                            value; // Speichern des Textes
+                                      });
+                                    },
                                     controller: controller,
                                     decoration: InputDecoration(
                                         hintStyle: TextStyle(color: whiteColor),
@@ -148,7 +157,12 @@ class _NoteScreenState extends State<NoteScreen> {
                                   child: IconButton(
                                     color: appColor,
                                     icon: const Icon(Icons.send),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      setState(() {
+                                        taskText = controller
+                                            .text; // Speichern des Textes
+                                      });
+                                    },
                                   ),
                                 ),
                               ],
